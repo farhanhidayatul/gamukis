@@ -1,12 +1,13 @@
-import images from "./images/Gamukis.png";
-import "./App.css";
+import React from "react";
+import logo from "./images/Gamukis.png";
+import Progressbar from "./component/progressbar";
+import './style.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={images} className="App-logo" alt="logo" />
-      </header>
+        <img src={logo} className="App-logo" alt="logo" />
+      <Progressbar/>
     </div>
   );
 }
