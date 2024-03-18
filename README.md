@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # gamukis
 Aplication and web development with a game quiz
 =======
+=======
+>>>>>>> bae467c0dd91bd2f6c051d2247734cf8af3df017
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -72,4 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<<<<<<< HEAD
 >>>>>>> 78ad87a (Initialize project using Create React App)
+=======
+>>>>>>> bae467c0dd91bd2f6c051d2247734cf8af3df017
