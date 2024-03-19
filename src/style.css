@@ -1,18 +1,29 @@
 .App {
-  display: flex;
-  flex-direction: column; /* Mengubah arah tata letak menjadi vertikal */
-  align-items: center;
-  margin-top: 10%;
+  text-align: center; /* Untuk memastikan konten di tengah */
+}
+
+.content {
+  padding: 20px; /* Menambahkan padding 20px */
+  display: inline-block; /* Membuat konten berada di tengah */
+}
+
+.progressbar-container {
+  direction: rtl; /* Ubah arah menjadi dari kiri ke kanan */
 }
 
 .progressbar {
   position: relative;
   overflow: hidden;
   width: 350px;
-  height: 35px;
+  height: 10px;
   border-radius: 5px;
   background-color: #eee;
-  margin-top: 20px; /* Menambahkan margin di atas progress bar */
+  margin: 0 auto; /* Meletakkan di tengah secara horizontal */
+}
+
+.progressbar > div {
+  height: 100%;
+  transition: width 0.5s;
 }
 
 .progressPercent {
@@ -23,11 +34,17 @@
   top: 50%;
   transform: translate(-50%, -50%);
   color: transparent;
-  text-shadow:none;
+  text-shadow: none;
+}
+
+.loading-text {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .btn {
-  margin-top: 20px; /* Menambahkan margin di atas tombol */
+  margin-top: 20px;
   border: none;
   border-radius: 3px;
   outline: none;
@@ -39,9 +56,17 @@
   font-family: arial;
   color: #fff;
   cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 
 .btn:hover {
   -webkit-box-shadow: inset 100px 0 0 0 #7c54d1;
   box-shadow: inset 100px 0 0 0 #7c54d1;
+}
+
+.loading-text {
+  display: block; /* Ensure that it's displayed as a block element */
+  text-align: center; /* Center align the text */
+  margin-top: 8px; /* Add some space between progress bar and text */
 }
