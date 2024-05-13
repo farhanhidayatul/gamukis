@@ -32,3 +32,56 @@ body {
     background:yellow;
     transition: 1s;
 }
+
+.profile {
+font-size : 18px;
+}
+
+.bg-2 {
+    background:grey;
+    width: 350px;
+    height: 600px;
+    position: relative;
+    margin: 8rem;
+    align-items: left;
+    justify-content: left;
+    display: flex;
+}
+
+.btn-edit-character {
+ width: 400px;
+ height: 75px;
+ font-size: 12px;
+ background: #FCD03E; 
+ border: none;
+ outline: none;
+ border-radius: 25px;
+ position: relative;
+ 
+}
+
+.character{
+    width: 20%;
+    height: 20%;
+    background: red;
+
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+}
+
+.level {
+    background: grey;
+    width: 200px;
+    height: 20px;
+}
+
+.skill {
+  
+}
+
+.experience {
+    
+}
