@@ -1,10 +1,12 @@
 .photo-container {
-    max-width: 75%; /* Maksimum lebar container sesuai lebar layar */
-    margin: 0 auto; /* Meletakkan container di tengah */
-  }
-  
-  .photo {
-    width: 75%; /* Lebar foto mengikuti lebar container */
-    height: auto; /* Menyesuaikan tinggi sesuai rasio aspek foto */
-  }
-  
+  display: flex;
+  justify-content: center; /* Pusatkan secara horizontal */
+  max-width: 75%; /* Maksimum lebar container sesuai lebar layar */
+  margin: 10% auto 0; /* Meletakkan container di tengah dan memberikan jarak atas */
+}
+
+.photo {
+  width: 75%; /* Lebar foto mengikuti lebar container */
+  height: auto; /* Menyesuaikan tinggi sesuai rasio aspek foto */
+  max-width: 100%; /* Hindari foto melebihi lebar container */
+}

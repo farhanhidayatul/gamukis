@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  width: auto;
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.5);
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 5%;
+}
+.navigation > li {
+  list-style-type: none;
+  padding: 15px;
+}
+.navigation > li > a {
+  color: #292929;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.navigation > li > a:hover {
+  color: #fcd03e;
+  transition: all 0.5s ease-in-out;
+}
+
+.active {
+  background-color: #fcd03e;
+  color: #292929;
+  border-radius: 40px;
+  font-weight: bold;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.active:hover {
+  color: #292929 !important;
+}
+
+.ImgContainer {
+  display: flex;
+  justify-content: center; /* Meletakkan gambar di tengah secara horizontal */
+  align-items: center; /* Meletakkan gambar di tengah secara vertikal */
+}
+
+.ImgContainer > .ImgContainer-2 {
+  margin-left: 10%;
+}
+
+.Img {
+  width: 30%; /* Lebar foto mengikuti lebar container */
+  height: auto; /* Menyesuaikan tinggi sesuai rasio aspek foto */
+  max-width: 100%; /* Hindari foto melebihi lebar container */
+}
+
+.btn-login {
+  padding: 5px 40px 5px 40px;
+  display: flex;
+  border-radius: 40px;
+  text-decoration: none;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  border: none; /* Menambahkan properti border dan menghilangkan garis tepi */
+  outline: none; /* Opsional: menghilangkan outline saat tombol mendapatkan fokus */
+  margin-right: 5%;
+}
+
+.btn-login .Navlink {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.btn-login:hover {
+  background-color: green;
+}
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    width: auto;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.5);
+  }
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1.23%;
+  }
+  .navigation > li {
+    list-style-type: none;
+    padding: 5px;
+  }
+  .navigation > li > a {
+    color: #292929;
+    font-size: 8px;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  .navigation > li > a:hover {
+    color: #fcd03e;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .active {
+    background-color: #fcd03e;
+    color: #292929;
+    border-radius: 10px;
+    font-weight: bold;
+
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .active:hover {
+    color: #292929 !important;
+  }
+
+  .ImgContainer > .ImgContainer-2 {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    width: auto;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.5);
+  }
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2.5%;
+  }
+  .navigation > li {
+    list-style-type: none;
+    padding: 10px;
+  }
+  .navigation > li > a {
+    color: #292929;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  .navigation > li > a:hover {
+    color: #fcd03e;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .active {
+    background-color: #fcd03e;
+    color: #292929;
+    border-radius: 40px;
+    font-weight: bold;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .active:hover {
+    color: #292929 !important;
+  }
+
+  .ImgContainer > .ImgContainer-2 {
+    margin-left: 10%;
+  }
+}

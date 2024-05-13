@@ -1,5 +1,13 @@
 import React from 'react';
 
-export default function Loading() {
-  return <p>Loading</p>;
+function MyComponent() {
+  const text = "Loading";
+
+  return (
+    <h1 className='loading-text'>
+      {text}
+    </h1>
+  );
 }
+
+export default MyComponent;
