@@ -1,0 +1,63 @@
+.section {
+    margin-top: 30px;
+  }
+  
+  .section h2 {
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  .scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: left;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  .icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .rating {
+    margin: 10px 0;
+  }
+  
+  .play-button {
+    background-color: #ffd700;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  
+  .scroll-button.left {
+    left: -20px;
+  }
+  
+  .scroll-button.right {
+    right: -20px;
+  }
+  

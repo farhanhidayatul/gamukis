@@ -67,26 +67,32 @@
 }
 
 .btn-login {
-  padding: 5px 40px 5px 40px;
+  width: 196px;
+  height: 52px;
   display: flex;
   border-radius: 40px;
   text-decoration: none;
-  color: black;
   justify-content: center;
   align-items: center;
   border: none; /* Menambahkan properti border dan menghilangkan garis tepi */
   outline: none; /* Opsional: menghilangkan outline saat tombol mendapatkan fokus */
   margin-right: 5%;
+  margin-top: 0.9%;
+  background-color: #1D9FE8;
+  box-shadow: 0 5px 15px 0 rgba(79, 143, 246, 0.5);
+  transition: 0.75s;
 }
 
 .btn-login .Navlink {
   text-decoration: none;
-  color: black;
-  font-size: 20px;
+  color: #fff;
+  font-size: 22.43px;
+  transition: 0.75s;
 }
 
 .btn-login:hover {
-  background-color: green;
+  color: #fff;
+  background-color: #2825A6;
 }
 
 @media screen and (max-width: 576px) {

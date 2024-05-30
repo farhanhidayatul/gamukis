@@ -20,7 +20,7 @@ const Navbar = ({ src, alt }) => {
           <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
         </ul>
 
-        <button className='btn-login'><NavLink to="/login" className="Navlink"><b>Login</b></NavLink></button>
+        <button className='btn-login'><NavLink to="/login" className="Navlink"><b>Masuk / Daftar</b></NavLink></button>
       </nav>
     </div>
   );

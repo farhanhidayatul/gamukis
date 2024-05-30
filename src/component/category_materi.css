@@ -1,0 +1,181 @@
+.kategori-materi {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin-top: 5%;
+}
+
+.kategori-materi h1 {
+    margin-bottom: 2.5%;
+    font-size: 36px;
+}
+
+.kategori-materi p {
+    font-size: 20px;
+    color: #747474;
+}
+
+.categories {
+    display: flex;
+    justify-content: left;
+    margin: 20px 0;
+}
+
+.category-button {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    height: 78px;
+    width: 214px;
+    background-color: #f0f0f0;
+    border: 5px solid #D7D7D7;
+    margin-right: 2.5%;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 10px; /* Add padding for consistent spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+    border-radius: 20px;
+}
+
+.category-button img {
+    margin-right: 10px; /* Space between image and text */
+}
+
+.category-button div {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: flex-start; /* Align text to the start (left) */
+}
+
+.category-button h3 {
+    font-size: 16px; /* Adjust font size as needed */
+    margin: 0; /* Remove default margin */
+}
+
+.category-button p {
+    font-size: 11px;
+    margin: 0; /* Remove default margin */
+    font-weight: normal;
+}
+
+.category-button.active{
+    background-color: #F0D68B;
+    border: 5px solid #FCD03E;
+}
+.category-button.active p{
+    font-weight: normal;
+}
+
+
+.isi-materi {
+    margin-top: 30px;
+}
+
+.scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.cards::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 4px 31.6px rgba(208, 219, 248, 0.8);
+    width: 431px;
+    height: 300px;
+    display: flex;
+    padding: 2.5%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.icon-container {
+    flex: 0 0 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+.card-content {
+    flex: 1;
+    margin-right: 10%;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 12px;
+    color: #747474;
+}
+
+.rating-review {
+    display: flex;
+}
+
+.rating, .review {
+    font-size: 12px;
+    color: #747474;
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.play-button {
+    background-color: #ffd700;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.scroll-button {
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.637); /* Semi-transparent background */
+    backdrop-filter: blur(0.25px); /* Apply blur effect */
+    padding-top: 9.45%;
+    padding-bottom: 10%;
+}
+
+.scroll-button.left {
+    left: -20px;
+    padding-right: 11.5%;
+}
+
+.scroll-button.right {
+    right: -20px;
+    padding-left: 11.5%;
+}
