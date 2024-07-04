@@ -1,7 +1,7 @@
 import React from "react";
-import Progressbar from "../component/progressbar";
-import Foto from "../component/photo"; 
-import "../component/progressbar.css"; 
+import Progressbar from "../component/component_loading/progressbar";
+import Foto from "../component/photo";
+import "../component/component_loading/progressbar.css";
 
 const Loading = () => {
   return (
@@ -10,6 +10,6 @@ const Loading = () => {
       <Progressbar />
     </div>
   );
-}
+};
 
 export default Loading;

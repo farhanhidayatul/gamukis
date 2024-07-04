@@ -1,0 +1,311 @@
+/* App */
+.App {
+  text-align: center;
+}
+
+/* Content */
+.content {
+  padding: 20px;
+  display: inline-block;
+}
+
+/* Progress Bar */
+.progressbar {
+  direction: rtl; /* Mengatur arah menjadi dari kiri ke kanan */
+  overflow: hidden;
+  width: 350px;
+  height: 10px;
+  /* top: -20px; */
+  border-radius: 5px;
+}
+.box-progress {
+  overflow: hidden;
+  width: 500px;
+  height: 50px;
+  padding: 100px;
+  background-color: transparent;
+  margin: 0 auto;
+}
+.progressbar-bg {
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ccc; /* Warna abu-abu */
+}
+
+.progressbar > div {
+  background-color: #eee;
+  height: 100%;
+  transition: width 0.2s;
+}
+
+/* Loading Text */
+.loading-text {
+  position: relative;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif; /* Menambahkan backup font */
+  color: #646464;
+  font-size: 2vw; /* Sesuaikan ukuran teks */
+  padding: 5px; /* Tambahkan padding untuk meningkatkan keterbacaan */
+  margin: 0 auto;
+  font-weight: 300; /* Menjadikan tulisan lebih tipis */
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 5%;
+}
+/* Button */
+.btn {
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
+  background-color: #fcd03e;
+  transition: box-shadow 0.5s;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 5% auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn > b {
+  text-decoration: none;
+  font-family: arial;
+  color: #fff;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0 0 0 5px #fcd03e;
+  box-shadow: 0 0 0 5px #fcd03e;
+}
+
+.textvalue {
+  display: flex;
+  justify-content: center; /* Meletakkan gambar di tengah secara horizontal */
+  align-items: center;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.text-different {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 360px) and (max-width: 500px) {
+  .container {
+    width: 100%;
+    text-align: center; /* Menempatkan konten di tengah */
+  }
+
+  .block-element {
+    font-family: 'Roboto', sans-serif;
+    height: 386.219px;
+    margin: 0 auto; /* Menempatkan elemen di tengah */
+    width: 375px;
+    -webkit-locale: "en";
+    view-transition-name: root;
+    background-color: #f0f0f0; /* Hanya untuk melihat area elemen */
+  }
+
+  .box-progress {
+    margin-top: -15%;
+    overflow: hidden;
+    width: 262.5px; /* Ukuran diperkecil 75% dari 350px */
+    height: 50px;
+    padding: 100px;
+    background-color: transparent;
+  }
+
+  .progressbar-bg {
+    width: 262.5px; /* Ukuran diperkecil 75% dari 350px */
+    height: 7.5px; /* Ukuran diperkecil 75% dari 10px */
+    border-radius: 5px;
+    background-color: #ccc;
+    margin: 0 auto;
+    align-items: center;
+    margin-left: -15%;
+  }
+
+  .progressbar {
+    background-color: #eee;
+    height: 100%;
+    transition: width 0.2s;
+  }
+
+  .loading-text {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #646464;
+    font-size: 2vw;
+    padding: 5px;
+    margin: 0 auto;
+    font-weight: 300;
+    padding-top: 5%;
+    margin-left: -25%;
+  }
+
+  .btn {
+    margin-top: 20%;
+    border: none;
+    outline: none;
+    width: 60px;
+    height: 12px;
+    border-radius: 15px;
+    background-color: #fcd03e;
+    transition: box-shadow 0.5s;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 5% auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-size: 8px;
+  }
+
+  .btn > b {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+
+  .btn:hover {
+    -webkit-box-shadow: 0 0 0 5px #fcd03e;
+    box-shadow: 0 0 0 5px #fcd03e;
+  }
+
+  .text {
+    text-align: center; /* Mengatur tata letak teks ke tengah */
+  }
+  
+  .textvalue {
+    /* Gaya untuk teks utama */
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 8px;
+    display: inline-block; /* Mengubah tata letak menjadi inline-block */
+    text-align: center; /* Mengatur tata letak teks ke tengah */
+  }
+  
+  .text-different {
+    /* Gaya untuk teks yang berbeda */
+    font-size: 8px;
+    text-decoration: underline; /* Garis bawah */
+  }
+  
+  .thinspace {
+    margin-right: 0.2em; /* Spasi kanan */
+  }
+
+}
+
+@media screen and (min-width: 0px) and (max-width: 0px) {
+  .container {
+    width: 100%;
+    text-align: center; /* Menempatkan konten di tengah */
+  }
+
+  .block-element {
+    font-family: 'Roboto', sans-serif;
+    height: 386.219px;
+    margin: 0 auto; /* Menempatkan elemen di tengah */
+    width: 375px;
+    -webkit-locale: "en";
+    view-transition-name: root;
+    background-color: #f0f0f0; /* Hanya untuk melihat area elemen */
+  }
+
+  .box-progress {
+    margin-top: -15%;
+    overflow: hidden;
+    width: 262.5px; /* Ukuran diperkecil 75% dari 350px */
+    height: 50px;
+    padding: 100px;
+    background-color: transparent;
+  }
+
+  .progressbar-bg {
+    width: 262.5px; /* Ukuran diperkecil 75% dari 350px */
+    height: 7.5px; /* Ukuran diperkecil 75% dari 10px */
+    border-radius: 5px;
+    background-color: #ccc;
+    margin: 0 auto;
+    align-items: center;
+    margin-left: -15%;
+  }
+
+  .progressbar {
+    background-color: #eee;
+    height: 100%;
+    transition: width 0.2s;
+  }
+
+  .loading-text {
+    position: relative;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #646464;
+    font-size: 2vw;
+    padding: 5px;
+    margin: 0 auto;
+    font-weight: 300;
+    padding-top: 5%;
+    margin-left: -25%;
+  }
+
+  .btn {
+    margin-top: 15%;
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 16px;
+    border-radius: 15px;
+    background-color: #fcd03e;
+    transition: box-shadow 0.5s;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 5% auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-size: 8px;
+  }
+
+  .btn > b {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+
+  .btn:hover {
+    -webkit-box-shadow: 0 0 0 5px #fcd03e;
+    box-shadow: 0 0 0 5px #fcd03e;
+  }
+
+  .text {
+    text-align: center; /* Mengatur tata letak teks ke tengah */
+  }
+  
+  .textvalue {
+    /* Gaya untuk teks utama */
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 8px;
+    display: inline-block; /* Mengubah tata letak menjadi inline-block */
+    text-align: center; /* Mengatur tata letak teks ke tengah */
+  }
+  
+  .text-different {
+    /* Gaya untuk teks yang berbeda */
+    font-size: 8px;
+    text-decoration: underline; /* Garis bawah */
+  }
+  
+  .thinspace {
+    margin-right: 0.2em; /* Spasi kanan */
+  }
+
+}

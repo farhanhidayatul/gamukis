@@ -67,8 +67,8 @@
 }
 
 .btn-login {
-  width: 196px;
-  height: 52px;
+  width: 200px;
+  height: 40px;
   display: flex;
   border-radius: 40px;
   text-decoration: none;
@@ -77,7 +77,7 @@
   border: none; /* Menambahkan properti border dan menghilangkan garis tepi */
   outline: none; /* Opsional: menghilangkan outline saat tombol mendapatkan fokus */
   margin-right: 5%;
-  margin-top: 0.9%;
+  margin-top: 20px;
   background-color: #1D9FE8;
   box-shadow: 0 5px 15px 0 rgba(79, 143, 246, 0.5);
   transition: 0.75s;
@@ -86,7 +86,7 @@
 .btn-login .Navlink {
   text-decoration: none;
   color: #fff;
-  font-size: 22.43px;
+  font-size: 16px;
   transition: 0.75s;
 }
 
@@ -95,60 +95,103 @@
   background-color: #2825A6;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 360px) and (max-width: 500px) {
   .wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 1%;
+    padding: 2%;
     width: auto;
-    height: 80px;
+    height: 40px;
     background-color: white;
-    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
   }
   .navigation {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 1.23%;
+    padding-right: 5%;
   }
   .navigation > li {
     list-style-type: none;
-    padding: 5px;
+    padding: 6px;
   }
   .navigation > li > a {
     color: #292929;
-    font-size: 8px;
+    font-size: 6px;
     text-decoration: none;
     text-transform: capitalize;
+    display: flex;
   }
-
+  
+  
   .navigation > li > a:hover {
     color: #fcd03e;
     transition: all 0.5s ease-in-out;
   }
-
+  
   .active {
     background-color: #fcd03e;
     color: #292929;
-    border-radius: 10px;
+    border-radius: 20px;
     font-weight: bold;
-
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
-    padding-left: 5px;
-    padding-right: 5px;
+  
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
-
+  
   .active:hover {
     color: #292929 !important;
   }
-
+  
+  .ImgContainer {
+    display: flex;
+    justify-content: center; /* Meletakkan gambar di tengah secara horizontal */
+    align-items: center; /* Meletakkan gambar di tengah secara vertikal */
+  }
+  
   .ImgContainer > .ImgContainer-2 {
     margin-left: 10%;
   }
+  
+  .Img {
+    width: 100%; /* Lebar foto mengikuti lebar container */
+    height: auto; /* Menyesuaikan tinggi sesuai rasio aspek foto */
+    max-width: 100px
+  }
+  
+  .btn-login {
+    width: 80px;
+    height: 20px;
+    display: flex;
+    border-radius: 20px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    border: none; /* Menambahkan properti border dan menghilangkan garis tepi */
+    outline: none; /* Opsional: menghilangkan outline saat tombol mendapatkan fokus */
+    margin-right: 5%;
+    margin-top: 10px;
+    background-color: #1D9FE8;
+    box-shadow: 0 5px 15px 0 rgba(79, 143, 246, 0.5);
+    transition: 0.75s;
+  }
+  
+  .btn-login .Navlink {
+    text-decoration: none;
+    color: #fff;
+    font-size: 6px;
+    transition: 0.75s;
+  }
+  
+  .btn-login:hover {
+    color: #fff;
+    background-color: #2825A6;
+  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 0px) {
   .wrapper {
     display: flex;
     justify-content: space-between;
@@ -200,3 +243,4 @@
     margin-left: 10%;
   }
 }
+

@@ -1,0 +1,434 @@
+.kategori-materi {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin-top: 5%;
+}
+
+.kategori-materi h1 {
+    margin-bottom: 2.5%;
+    font-size: 36px;
+}
+
+.kategori-materi p {
+    font-size: 20px;
+    color: #747474;
+}
+
+.categories {
+    display: flex;
+    justify-content: left;
+    margin: 20px 0;
+}
+
+.category-button {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    height: 78px;
+    width: 214px;
+    background-color: #f0f0f0;
+    border: 5px solid #D7D7D7;
+    margin-right: 2.5%;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 10px; /* Add padding for consistent spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+    border-radius: 20px;
+}
+
+.category-button img {
+    margin-right: 10px; /* Space between image and text */
+}
+
+.category-button div {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: flex-start; /* Align text to the start (left) */
+}
+
+.category-button h3 {
+    font-size: 16px; /* Adjust font size as needed */
+    margin: 0; /* Remove default margin */
+}
+
+.category-button p {
+    font-size: 12px;
+    margin: 0; /* Remove default margin */
+    font-weight: normal;
+}
+
+
+.category-button.active{
+    background-color: #F0D68B;
+    border: 5px solid #FCD03E;
+}
+.category-button.active p{
+    font-weight: normal;
+}
+
+
+.isi-materi {
+    margin-top: 30px;
+}
+
+.scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.cards::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 4px 31.6px rgba(208, 219, 248, 0.8);
+    width: 431px;
+    height: 300px;
+    display: flex;
+    padding: 2.5%;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.icon-container {
+    flex: 0 0 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+.icon-biologi, .icon-kimia, .icon-fisika, .icon-matematika, .icon-informatika {
+    pointer-events: none;
+}
+
+
+
+.card-content {
+    flex: 1;
+    margin-right: 10%;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 12px;
+    color: #747474;
+}
+
+.rating-review {
+    display: flex;
+}
+
+.rating, .review {
+    font-size: 12px;
+    color: #747474;
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.play-button {
+    background-color: #ffd700;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.scroll-button {
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.637); /* Semi-transparent background */
+    backdrop-filter: blur(0.25px); /* Apply blur effect */
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.scroll-button.left {
+    left: -20px;
+    padding-right: 11.5%;
+}
+
+.scroll-button.right {
+    right: -20px;
+    padding-left: 11.5%;
+}
+
+@media screen and (min-width: 360px) and (max-width: 500px) {
+
+    .kategori-materi {
+        text-align: left;
+        font-family: Arial, sans-serif;
+        margin-top: 5%;
+    }
+    
+    .kategori-materi h1 {
+        margin-bottom: 2.5%;
+        font-size: 16px;
+    }
+    
+    .kategori-materi p {
+        font-size: 6px;
+        color: #747474;
+    }
+    
+    .categories {
+        display: flex;
+        justify-content: left;
+        margin: 20px 0;
+    }
+    
+    .category-button {
+        display: flex;
+        align-items: center;
+        height: 24px;
+        width: 74px;
+        background-color: #f0f0f0;
+        border: 2.5px solid #D7D7D7;
+        margin-right: 2.5%;
+        cursor: pointer;
+        padding: 0 10px;
+        box-sizing: border-box;
+        border-radius: 20px;
+    }
+    
+    .category-button img {
+        margin-right: 10px;
+        height: 15px;
+    }
+    
+    .category-button div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .category-button h3 {
+        font-size: 7px;
+        margin: 0;
+    }
+    
+    .category-button p {
+        font-size: 3px;
+        margin: 0;
+        font-weight: normal;
+    }
+    
+    .category-button.active{
+        background-color: #F0D68B;
+        border: 2.5px solid #FCD03E;
+    }
+    .category-button.active p{
+        font-weight: normal;
+    }
+    
+    
+    .isi-materi {
+        margin-top: 30px;
+    }
+    
+    .scroll-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    .cards {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 10px;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    
+    .cards::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .card {
+        background-color: #fff;
+        border-radius: 25px;
+        box-shadow: 0 4px 31.6px rgba(208, 219, 248, 0.8);
+        width: 150px;
+        height: 100px;
+        display: flex;
+        padding: 7.5%;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        text-align: left;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+    }
+    
+    .icon-container {
+        flex: 0 0 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        margin-right: 40px;
+    }
+
+    .icon-biologi {
+        width: 75px;
+        height: 75px;
+        margin-left: 15px;
+      }
+      
+      .icon-kimia {
+        width: 75px;
+        height: 75px;
+        margin-left: 15px;
+      }
+      
+      .icon-fisika {
+        width: 75px;
+        height: 75px;
+        margin-left: 15px;
+      }
+      
+      .icon-matematika {
+        width: 75px;
+        height: 75px;
+        margin-left: 15px;
+      }
+      
+      .icon-informatika {
+        width: 75px;
+        height: 75px;
+        margin-left: 15px;
+      }
+      
+    .card-content {
+        flex: 1;
+        margin-right: 5%;
+    }
+    
+    .card-content h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .card-content p {
+        font-size: 6px;
+        color: #747474;
+    }
+    
+    .rating-review {
+        display: flex;
+    }
+    
+    .rating, .review {
+        font-size: 6px;
+        color: #747474;
+        display: flex;
+        align-items: center;
+        margin-right: 5%;
+        margin-bottom: 5%;
+    }
+
+    .rating img {
+        background-size: contain;
+        height: 15px;
+        width: 15px;
+    }
+
+    .review img {
+        background-size: contain;
+        height: 10px;
+        width: 10px;
+    }
+    
+    .play-button {
+        background-color: #ffd700;
+        border: none;
+        color: #fff;
+        padding: 4px 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 20px;
+        width: 100%;
+        font-size: 6px;
+    }
+    
+    .scroll-button {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.637);
+        backdrop-filter: blur(0.25px);
+        padding-top: 17.5%;
+        padding-bottom: 17.5%;
+    }
+    
+    .scroll-button.left {
+        left: -20px;
+        padding-right: 15%;
+    }
+
+    .scroll-button.left img {
+        background-size: contain;
+        height: 25px;
+        width: 25px;
+    }
+    
+    .scroll-button.right {
+        right: -20px;
+        padding-left: 15%;
+    }
+
+    .scroll-button.right img {
+        background-size: contain;
+        height: 25px;
+        width: 25px;
+    }
+
+  }
+  
+  @media screen and (min-width: 390px) and (max-width: 414px) {
+
+
+
+  }

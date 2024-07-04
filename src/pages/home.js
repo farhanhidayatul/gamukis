@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../component/Navbar"
-import Banner from "../component/banner"
-import KategoriMateri from '../component/category_materi';
-import "../pages/home.css" 
+import Navbar from "../component/Navbar";
+import Banner from "../component/component_home/banner";
+import KategoriMateri from "../component/component_home/category_materi";
+import "../pages/home.css";
 
 const Home = () => {
   return (
@@ -12,9 +12,8 @@ const Home = () => {
         <Banner />
         <KategoriMateri />
       </div>
-      
     </div>
   );
-}
+};
 
 export default Home;

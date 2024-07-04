@@ -1,0 +1,65 @@
+.flex-container-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FBD249;
+}
+
+.buttonLogo {
+    border: none; /* Ensure there's no border by default */
+    background: none; /* Ensure background is transparent */
+    margin: 20px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  .buttonLogo img {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .buttonLogo.active {
+    border: 2px solid blue; /* Add blue border when active */
+    border-radius: 50%; /* Optional: add some border radius */
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 500px) {
+    .flex-container-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FBD249;
+    }
+    
+    .buttonLogo {
+        border: none; /* Ensure there's no border by default */
+        background: none; /* Ensure background is transparent */
+        margin: 5px;
+        padding: 5px;
+        background-color: white;
+        border-radius: 50%;
+      }
+      
+      .buttonLogo img {
+        display: flex;
+        width: 25px;
+        height: 25px;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+        padding-top: 2.5px;
+        padding-bottom: 2.5px;
+      }
+      
+      .buttonLogo.active {
+        border: 2px solid blue; /* Add blue border when active */
+        border-radius: 50%; /* Optional: add some border radius */
+      }
+
+  }
+  

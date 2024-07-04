@@ -1,10 +1,11 @@
 import React from 'react';
-import Play from '../images/play.png';
-import './banner.css';
+import Play from '../../images/play.png';
+import '../component_home/banner.css';
 
 const PromoBanner = () => {
   return (
     <div className="promo-banner">
+      <div className='background-interior'></div>
       <div className='banner-background'>
         <div className="promo-content">
           <div className="promo-text">
@@ -28,4 +29,5 @@ const PromoBanner = () => {
 };
 
 export default PromoBanner;
+
 

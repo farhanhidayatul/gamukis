@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./loading.js";
 import { Link } from "react-router-dom";
+import "../component_loading/progressbar.css";
 
 export default function Progressbar() {
   const [filled, setFilled] = useState(0);
@@ -56,14 +57,14 @@ export default function Progressbar() {
           </Link>
         )
       )}
-      <div>
-        <p className="textvalue">
-          Lorem ipsum is placeholder text commonly used in the graphic, print,
+      <div class="text">
+        <p class="textvalue">
+          Lorem ipsum is placeholder text commonly used in the graphic, print,
           and publishing industries for previewing layouts and visual
-          <p>&thinsp;</p>
-          <p className="text-different">
+          <span class="thinspace">&thinsp;</span>
+          <span class="text-different">
             <u>Pusat bantuan!</u>
-          </p>
+          </span>
         </p>
       </div>
     </div>

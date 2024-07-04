@@ -1,0 +1,263 @@
+.promo-banner-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(270deg, 
+    rgb(35, 104, 236) 0%, 
+    rgb(28, 120, 232) 25%, 
+    rgb(21, 136, 228) 50%, 
+    rgb(14, 153, 224) 75%, 
+    rgb(0, 171, 209) 100%);
+    overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+    padding: 20px; /* Add padding if necessary to create space between the navbar and the banner */
+    position: relative; /* Needed for the pseudo-element to be positioned correctly */
+}
+
+.promo-banner-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Adjust as needed */
+    width: 2px;
+    opacity: 0.5;
+}
+
+.banner-background-2 {
+    display: block;
+    width: 640px;
+    height: 440px;
+    align-items: baseline;
+    background-size: cover;
+    position: relative;
+    overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+    padding-top: 0; /* Correct the padding */
+}
+
+.promo-images-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url(/src/images/VEKTOR.svg);
+    width: 768px;
+    height: 500px;
+    left: 420px;
+    position: absolute;
+}
+
+.background-interior-2 {
+    background-image: url(/src/images/Hiasan-2.svg);
+    background-size: contain; /* Atur gambar agar tetap terlihat sepenuhnya */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; /* Sesuaikan dengan elemen induk */
+    max-height: 400px; /* Pastikan tidak melebihi tinggi elemen .banner-background */
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    z-index: 1; /* Tetap seperti ini */
+}
+
+.promo-text-2 h2 {
+    margin: 0;
+    font-size: 60px;
+    color: #fff;
+    padding-bottom: 1%;
+}
+
+.promo-text-2 h3 {
+    margin-top: 100px;
+    font-size: 30px;
+    color: #478193;
+    padding-top: 20px; /* Adjust padding to avoid content overflow */
+}
+
+.promo-text-2 p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #fff;
+    opacity: 75%;
+}
+
+@media screen and (min-width: 360px) and (max-width: 500px) {
+    .promo-banner-2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(270deg, 
+        rgb(35, 104, 236) 0%, 
+        rgb(28, 120, 232) 25%, 
+        rgb(21, 136, 228) 50%, 
+        rgb(14, 153, 224) 75%, 
+        rgb(0, 171, 209) 100%);
+        overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+        padding: 20px; /* Add padding if necessary to create space between the navbar and the banner */
+        position: relative; /* Needed for the pseudo-element to be positioned correctly */
+    }
+    
+    .promo-banner-2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%; /* Adjust as needed */
+        width: 2px;
+        opacity: 0.5;
+    }
+    
+    .banner-background-2 {
+        display: block;
+        width: 320px;
+        height: 100px;
+        align-items: baseline;
+        background-size: cover;
+        position: relative;
+        overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+        padding-top: 0; /* Correct the padding */
+    }
+    
+    .promo-images-2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url(/src/images/VEKTOR.svg);
+        width: 295px;
+        height: 100%;
+        left: 115px;
+        position: absolute;
+    }
+    
+    .background-interior-2 {
+        background-image: url(/src/images/Hiasan-2.svg);
+        background-size: contain; /* Atur gambar agar tetap terlihat sepenuhnya */
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%; /* Sesuaikan dengan elemen induk */
+        max-height: 200px; /* Pastikan tidak melebihi tinggi elemen .banner-background */
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        z-index: 1; /* Tetap seperti ini */
+    }
+    
+    .promo-text-2 h2 {
+        margin: 0;
+        font-size: 15px;
+        color: #fff;
+        padding-bottom: 1%;
+    }
+    
+    .promo-text-2 h3 {
+        margin-top: 20px;
+        font-size: 7.5px;
+        color: #478193;
+        padding-top: 20px; /* Adjust padding to avoid content overflow */
+    }
+    
+    .promo-text-2 p {
+        margin: 0.5px 0;
+        font-size: 6px;
+        color: #fff;
+        opacity: 75%;
+        width: 150px;
+    }
+
+
+}
+
+@media screen and (min-width: 740px) and (max-width: 860px) {
+    .promo-banner-2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(270deg, 
+        rgb(35, 104, 236) 0%, 
+        rgb(28, 120, 232) 25%, 
+        rgb(21, 136, 228) 50%, 
+        rgb(14, 153, 224) 75%, 
+        rgb(0, 171, 209) 100%);
+        overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+        padding: 20px; /* Add padding if necessary to create space between the navbar and the banner */
+        position: relative; /* Needed for the pseudo-element to be positioned correctly */
+    }
+    
+    .promo-banner-2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%; /* Adjust as needed */
+        width: 2px;
+        opacity: 0.5;
+    }
+    
+    .banner-background-2 {
+        display: block;
+        width: 640px;
+        height: 440px;
+        align-items: baseline;
+        background-size: cover;
+        position: relative;
+        overflow: hidden; /* Sembunyikan konten yang melebihi elemen ini */
+        padding-top: 0; /* Correct the padding */
+    }
+    
+    .promo-images-2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url(/src/images/VEKTOR.svg);
+        width: 768px;
+        height: 500px;
+        left: 420px;
+        position: absolute;
+    }
+    
+    .background-interior-2 {
+        background-image: url(/src/images/Hiasan-2.svg);
+        background-size: contain; /* Atur gambar agar tetap terlihat sepenuhnya */
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%; /* Sesuaikan dengan elemen induk */
+        max-height: 400px; /* Pastikan tidak melebihi tinggi elemen .banner-background */
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        z-index: 1; /* Tetap seperti ini */
+    }
+    
+    .promo-text-2 h2 {
+        margin: 0;
+        font-size: 60px;
+        color: #fff;
+        padding-bottom: 1%;
+    }
+    
+    .promo-text-2 h3 {
+        margin-top: 100px;
+        font-size: 30px;
+        color: #478193;
+        padding-top: 20px; /* Adjust padding to avoid content overflow */
+    }
+    
+    .promo-text-2 p {
+        margin: 5px 0;
+        font-size: 18px;
+        color: #fff;
+        opacity: 75%;
+    }
+
+
+}
