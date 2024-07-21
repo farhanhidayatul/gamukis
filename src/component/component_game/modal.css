@@ -1,0 +1,108 @@
+.coin-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+    border: 2.5px solid;
+    border-image: linear-gradient(to bottom, #558FFF, #A7A587, #FFBE06) 1;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    outline: none;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.option-button {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, filter 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #03a9f4 2px;
+}
+
+.option-button:nth-child(1) {
+    background-color: #ffc107; /* Yellow */
+}
+
+.option-button:nth-child(2) {
+    background-color: #9c27b0; /* Purple */
+}
+
+.option-button:nth-child(3) {
+    background-color: #03a9f4; /* Light Blue */
+}
+
+.option-button:nth-child(4) {
+    background-color: #f44336; /* Red */
+}
+
+.option-button.correct {
+    background-color: #4caf50; /* Green */
+}
+
+.option-button.incorrect {
+    background-color: #f44336; /* Red */
+}
+
+.option-button.blurred {
+    filter: blur(2px);
+    cursor: not-allowed;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+.correct {
+    background-color: green;
+    color: white;
+  }
+  
+  .incorrect {
+    background-color: red;
+    color: white;
+  }
+  
+  
+  .feedback.correct {
+    color: green;
+  }
+  
+  .feedback.incorrect {
+    color: red;
+  }
+  

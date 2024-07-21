@@ -1,0 +1,21 @@
+/* src/component_home/Skills.css */
+.skills {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skill-box {
+    background-color: #e0e0e0;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+  }
+  

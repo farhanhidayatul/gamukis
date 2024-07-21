@@ -1,10 +1,11 @@
+// src/component_home/IsiMateri.js
 import React, { useRef, useState, useEffect } from "react";
 import "../component_home/category_materi.css";
 import Iconleft from "../../images/icon_left.svg";
 import Iconright from "../../images/icon_right.svg";
 import Card from "../component_home/card";
 
-const IsiMateri = ({ cards }) => {
+const IsiMateri = ({ cards, onMainkan }) => {
   const scrollRef = useRef(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
@@ -57,6 +58,7 @@ const IsiMateri = ({ cards }) => {
                 rating={card.rating}
                 reviews={card.reviews}
                 description={card.description}
+                onMainkan={() => onMainkan(card)}
               />
             ))}
         </div>

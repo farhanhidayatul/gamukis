@@ -1,0 +1,78 @@
+.cardSS {
+  background-color: #fff3e0;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.8; /* Set opacity to 80% */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-cardSS {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.title h1 {
+  margin: 0;
+  color: #4285f4;
+}
+
+.title p {
+  margin: 0;
+  font-style: italic;
+  color: #555;
+}
+
+.description {
+  margin: 20px 0;
+  color: #777;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 0.75fr 1fr;
+  gap: 5px; /* Adjust the gap as needed */
+  font-size: 10px;
+  margin-left: 25px;
+}
+
+.feature {
+  color: black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-weight: bold;
+}
+
+
+.feature-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  pointer-events: none; /* Prevent interactions */
+  user-select: none; /* Prevent text selection */
+}
+
+.feature img {
+  pointer-events: none; /* Prevent interactions */
+  user-select: none; /* Prevent text selection */
+}
+
+.share-button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}

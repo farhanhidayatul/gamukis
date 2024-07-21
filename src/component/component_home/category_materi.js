@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./category_materi.css";
 import IsiMateri from "./category_materi_isi";
 import { FaBook } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const KategoriMateri = () => {
   const [activeCategory, setActiveCategory] = useState("SAINTEK");
+  const navigate = useNavigate();
 
   const saintekCards = [
     {
@@ -19,8 +21,9 @@ const KategoriMateri = () => {
       ),
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Sains Biologi",
+      features: ["Kritis", "Kreatif", "Kolaborasi", "Teknologi dan informasi"]
     },
     {
       title: "Kimia",
@@ -34,8 +37,9 @@ const KategoriMateri = () => {
       ),
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Sains Kimia",
+      features: ["Analitis", "Empatik", "Kolaboratif", "Inovatif"]
     },
     {
       title: "Fisika",
@@ -49,8 +53,9 @@ const KategoriMateri = () => {
       ),
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Sains Fisika",
+      features: ["Problem Solving", "Logical", "Scientific Thinking", "Innovative"]
     },
     {
       title: "Matematika",
@@ -64,8 +69,9 @@ const KategoriMateri = () => {
       ),
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Sains Matematika",
+      features: ["Analytical Thinking", "Quantitative Reasoning", "Problem Solving", "Abstract Thinking"]
     },
     {
       title: "Informatika",
@@ -79,8 +85,9 @@ const KategoriMateri = () => {
       ),
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Sains Informatika",
+      features: ["Computational Thinking", "Algorithmic Problem Solving", "System Design", "Technology Integration"]
     },
   ];
 
@@ -90,42 +97,62 @@ const KategoriMateri = () => {
       icon: <FaBook />,
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Ilmu Sejarah",
+      features: ["Historical Analysis", "Critical Thinking", "Research Skills", "Contextual Understanding"]
     },
     {
       title: "Geografi",
       icon: <FaBook />,
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Ilmu Geografi",
+      features: ["Spatial Awareness", "Environmental Understanding", "Map Reading", "Data Analysis"]
     },
     {
       title: "Ekonomi",
       icon: <FaBook />,
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Ilmu Ekonomi",
+      features: ["Economic Analysis", "Financial Literacy", "Market Understanding", "Data Interpretation"]
     },
     {
       title: "Sosiologi",
       icon: <FaBook />,
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Ilmu Sosiologi",
+      features: ["Societal Analysis", "Critical Thinking", "Research Skills", "Contextual Understanding"]
     },
     {
       title: "Matematika",
       icon: <FaBook />,
       rating: 4.3,
       reviews: 112,
-      description:
-        "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      description: "Placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+      subtitle: "Ilmu Matematika",
+      features: ["Analytical Thinking", "Quantitative Reasoning", "Problem Solving", "Abstract Thinking"]
     },
   ];
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+  };
+
+  const handleMainkan = (card) => {
+    const cardData = {
+      title: card.title,
+      logo: activeCategory === "SAINTEK" ? "logo_saintek" : "logo_soshum", // Use a string identifier for the logo
+      subtitle: activeCategory === "SAINTEK" ? "Sains & Teknologi" : "Sosial & Hukum",
+      description: card.description,
+      features: card.features,
+    };
+    navigate(`/gamePage`, { state: { selectedCard: cardData } });
+  };
 
   return (
     <div className="kategori-materi">
@@ -138,10 +165,8 @@ const KategoriMateri = () => {
 
       <div className="categories">
         <button
-          className={`category-button ${
-            activeCategory === "SAINTEK" ? "active" : ""
-          }`}
-          onClick={() => setActiveCategory("SAINTEK")}
+          className={`category-button ${activeCategory === "SAINTEK" ? "active" : ""}`}
+          onClick={() => handleCategoryClick("SAINTEK")}
         >
           <img
             src={require("../../images/logo_saintek.svg").default}
@@ -155,10 +180,8 @@ const KategoriMateri = () => {
           </h3>
         </button>
         <button
-          className={`category-button ${
-            activeCategory === "SOSHUM" ? "active" : ""
-          }`}
-          onClick={() => setActiveCategory("SOSHUM")}
+          className={`category-button ${activeCategory === "SOSHUM" ? "active" : ""}`}
+          onClick={() => handleCategoryClick("SOSHUM")}
         >
           <img
             src={require("../../images/logo_soshum.svg").default}
@@ -173,8 +196,8 @@ const KategoriMateri = () => {
         </button>
       </div>
 
-      {activeCategory === "SAINTEK" && <IsiMateri cards={saintekCards} />}
-      {activeCategory === "SOSHUM" && <IsiMateri cards={soshumCards} />}
+      {activeCategory === "SAINTEK" && <IsiMateri cards={saintekCards} onMainkan={handleMainkan} />}
+      {activeCategory === "SOSHUM" && <IsiMateri cards={soshumCards} onMainkan={handleMainkan} />}
     </div>
   );
 };

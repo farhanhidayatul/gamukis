@@ -6,8 +6,9 @@ import Home from './pages/home';
 import Game from './pages/game';
 import Tutorial from './pages/tutorial';
 import About from './pages/about';
-import NT from './pages/notfound';
+import NF from './pages/notfound';
 import InGame from "./component/component_game/inGame";
+import GamePage from "./pages/gamePage";
 
 const TRACKING_ID = "G-FLNMFT2FES"; // Your Google Analytics tracking ID
 ReactGA.initialize(TRACKING_ID);
@@ -44,8 +45,14 @@ const App = () => {
         <Route path="/game" element={<Game />} />
         <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/about" element={<About />} />
+        <Route path="/gamePageBiologi" element={<GamePage />} />
+        <Route path="/gamePageFisika" element={<GamePage />} />
+        <Route path="/gamePageMatematika" element={<GamePage />} />
+        <Route path="/gamePageKimia" element={<GamePage />} />
+        <Route path="/gamePageInformatika" element={<GamePage />} />
+        <Route path="/gamePage" element={<GamePage />} />
         <Route path="/inGame" element={<InGame/>} />
-        <Route path="*" element={<NT />} />
+        <Route path="*" element={<NF />} />
       </Routes>
     </Router>
   );

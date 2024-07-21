@@ -1,27 +1,32 @@
-class KeyPressListener {
-    constructor(keyCode, callback) {
-      let keySafe = true;
-      this.keydownFunction = function (event) {
-        if (event.code === keyCode) {
-          if (keySafe) {
-            keySafe = false;
-            callback();
-          }
-        }
-      };
-      this.keyupFunction = function (event) {
-        if (event.code === keyCode) {
-          keySafe = true;
-        }
-      };
-      document.addEventListener("keydown", this.keydownFunction);
-      document.addEventListener("keyup", this.keyupFunction);
+import { useEffect, useState, useCallback } from 'react';
+
+const useKeyPress = (keyMappings) => {
+  const [keySafe, setKeySafe] = useState(true);
+
+  const keydownFunction = useCallback((event) => {
+    if (keySafe && keyMappings[event.code]) {
+      setKeySafe(false);
+      keyMappings[event.code]();
     }
-  
-    unbind() {
-      document.removeEventListener("keydown", this.keydownFunction);
-      document.removeEventListener("keyup", this.keyupFunction);
+  }, [keySafe, keyMappings]);
+
+  const keyupFunction = useCallback((event) => {
+    if (keyMappings[event.code]) {
+      setKeySafe(true);
     }
-  }
-  
-  export default KeyPressListener;
+  }, [keyMappings]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', keydownFunction);
+    document.addEventListener('keyup', keyupFunction);
+
+    return () => {
+      document.removeEventListener('keydown', keydownFunction);
+      document.removeEventListener('keyup', keyupFunction);
+    };
+  }, [keydownFunction, keyupFunction]);
+
+  return null;
+};
+
+export default useKeyPress;

@@ -1,3 +1,4 @@
+// src/component_home/Card.js
 import React from 'react';
 import '../component_home/category_materi.css';
 
@@ -27,5 +28,7 @@ const Card = ({ title, icon, rating, reviews, description, onMainkan }) => {
 };
 
 export default Card;
+
+
 
 

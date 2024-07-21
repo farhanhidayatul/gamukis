@@ -19,7 +19,7 @@ const GameContainer = ({ players, coins }) => {
               <span className="Character_name">{player.name}</span>
               <span className="Character_coins">{player.coins}</span>
             </div>
-            <div className="Character_you-arrow"></div>
+            {player.id === playerId && <div className="Character_you-arrow"></div>}
           </div>
         );
       })}
@@ -41,3 +41,4 @@ const GameContainer = ({ players, coins }) => {
 };
 
 export default GameContainer;
+

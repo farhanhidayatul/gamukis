@@ -1,0 +1,78 @@
+.game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: url('../images/background_game.svg');
+    background-size: cover;
+  }
+  
+  .back-button {
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+  }
+
+  .back-button p {
+    font-size: 24px;
+    margin-left: 20px;
+    color: white;
+  }
+  
+  .game-page-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+  }
+  
+
+  
+  .main-content {
+    flex: 2;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .actions {
+    background-color: #fff3e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+  }
+  
+  .action-button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .details {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details h2 {
+    margin-bottom: 20px;
+  }
+
+  
+  

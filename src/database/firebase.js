@@ -1,8 +1,8 @@
+// firebase.js
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, set, update, onValue } from 'firebase/database';
+import { getDatabase, ref, set, onValue, onDisconnect, remove, update } from 'firebase/database';
+import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDj8cRmHIn90q5pFE5Kjbvrwxel6bQSPww",
   authDomain: "ujicoba-52016.firebaseapp.com",
@@ -15,13 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth(app);
 
-export const auth = getAuth(app);
-export const database = getDatabase(app);
-export const signInAnonymouslyFirebase = signInAnonymously;
-export const onAuthStateChangedFirebase = onAuthStateChanged;
-export const databaseRef = ref; // Reference function
-export const setDatabase = set; // Set function
-export const updateDatabase = update; // Update function
-export const onValueDatabase = onValue; // onValue listener function
-
+export { app, database, auth, ref, set, onValue, onDisconnect, remove, update, signInAnonymously, onAuthStateChanged };

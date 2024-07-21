@@ -1,208 +1,203 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  auth,
-  database,
-  signInAnonymouslyFirebase,
-  onAuthStateChangedFirebase,
-  databaseRef,
-  setDatabase,
-  updateDatabase,
-  onValueDatabase,
+  auth, database, ref, set, onValue, onDisconnect, remove, update, signInAnonymously, onAuthStateChanged
 } from '../../database/firebase';
-import './style.css';
-import GameContainer from './gameContainer';
-import PlayerInfo from './playerInfo';
 import {
-  playerColors,
-  randomFromArray,
-  createName,
-  getKeyString,
-  isSolid,
-  getRandomSafeSpot,
+  randomFromArray, getKeyString, createName, isSolid, getRandomSafeSpot
 } from './utils';
-import KeyPressListener from './useKeyPress';
+import Player from './playerInfo';
+import Coin from './coin';
+import "./style.css";
+import useKeyPress from './useKeyPress';
+import CoinModal from './modal';
+import { questions } from './questions';
+
+const mapData = {
+  minX: 1,
+  maxX: 14,
+  minY: 4,
+  maxY: 12,
+  blockedSpaces: {
+    "7x4": true, "1x11": true, "12x10": true,
+  },
+};
+
+const playerColors = ["blue", "red", "orange", "yellow", "green", "purple", "man"];
 
 const InGame = () => {
-  const [playerId, setPlayerId] = useState();
-  const [playerRef, setPlayerRef] = useState(null);
+  const [playerId, setPlayerId] = useState(null);
   const [players, setPlayers] = useState({});
-  const [playerElements, setPlayerElements] = useState({});
   const [coins, setCoins] = useState({});
-  const [coinElements, setCoinElements] = useState({});
-  const [name, setName] = useState('');
-  const [color, setColor] = useState(randomFromArray(playerColors));
+  const [playerName, setPlayerName] = useState(createName());
+  const [playerColor, setPlayerColor] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    question: "",
+    options: [],
+    correct: ""
+  });
 
-  useEffect(() => {
-    const authListener = onAuthStateChangedFirebase(auth, (user) => {
-      if (user) {
-        setPlayerId(user.uid);
-        const playerRef = databaseRef(database, `players/${user.uid}`);
-        setPlayerRef(playerRef);
+  const handleNameChange = (event) => {
+    const newName = event.target.value || createName();
+    setPlayerName(newName);
+    if (playerId) {
+      update(ref(database, `players/${playerId}`), { name: newName });
+    }
+  };
 
-        const playerName = createName();
-        setName(playerName);
-        const { x, y } = getRandomSafeSpot();
-
-        if (playerRef) {
-          setDatabase(playerRef, {
-            id: user.uid,
-            name: playerName,
-            direction: 'right',
-            color: randomFromArray(playerColors),
-            x,
-            y,
-            coins: 0,
-          });
-
-          try {
-            playerRef.onDisconnect().remove();
-          } catch (error) {
-            console.error("Error in setting onDisconnect: ", error);
-          }
-
-          initGame(playerRef);
-        } else {
-          console.error("playerRef is not initialized correctly.");
-        }
-      } else {
-        signInAnonymouslyFirebase(auth).catch((error) => {
-          console.error(error.code, error.message);
-        });
-      }
-    });
-
-    return () => {
-      if (authListener) {
-        authListener();
-      }
-    };
-  }, []);
-
-  const initGame = (playerRef) => {
-    // Listener untuk tombol panah dan WASD
-    const keyMappings = {
-      'ArrowUp': [0, -1],
-      'ArrowDown': [0, 1],
-      'ArrowLeft': [-1, 0],
-      'ArrowRight': [1, 0],
-      'W': [0, -1],
-      'A': [-1, 0],
-      'S': [0, 1],
-      'D': [1, 0],
-    };
-
-    Object.keys(keyMappings).forEach((key) => {
-      new KeyPressListener(key, () => {
-        const [xChange, yChange] = keyMappings[key];
-        handleArrowPress(xChange, yChange);
-      });
-    });
-
-    const allPlayersRef = databaseRef(database, 'players');
-    const allCoinsRef = databaseRef(database, 'coins');
-
-    onValueDatabase(allPlayersRef, (snapshot) => {
-      const playersData = snapshot.val() || {};
-      setPlayers(playersData);
-    });
-
-    onValueDatabase(allPlayersRef, (snapshot) => {
-      const addedPlayer = snapshot.val();
-      setPlayerElements((prevElements) => ({
-        ...prevElements,
-        [addedPlayer.id]: addedPlayer,
-      }));
-    });
-
-    onValueDatabase(allPlayersRef, (snapshot) => {
-      const removedPlayer = snapshot.val();
-      setPlayerElements((prevElements) => {
-        const newElements = { ...prevElements };
-        delete newElements[removedPlayer.id];
-        return newElements;
-      });
-    });
-
-    onValueDatabase(allCoinsRef, (snapshot) => {
-      const coinsData = snapshot.val() || {};
-      setCoins(coinsData);
-    });
-
-    onValueDatabase(allCoinsRef, (snapshot) => {
-      const coin = snapshot.val();
-      setCoinElements((prevElements) => ({
-        ...prevElements,
-        [getKeyString(coin.x, coin.y)]: coin,
-      }));
-    });
-
-    onValueDatabase(allCoinsRef, (snapshot) => {
-      const { x, y } = snapshot.val();
-      setCoinElements((prevElements) => {
-        const newElements = { ...prevElements };
-        delete newElements[getKeyString(x, y)];
-        return newElements;
-      });
-    });
-
-    placeCoin();
+  const changeColor = () => {
+    const currentIndex = playerColors.indexOf(playerColor);
+    const nextIndex = (currentIndex + 1) % playerColors.length;
+    const newColor = playerColors[nextIndex];
+    setPlayerColor(newColor);
+    if (playerId) {
+      update(ref(database, `players/${playerId}`), { color: newColor });
+    }
   };
 
   const handleArrowPress = (xChange = 0, yChange = 0) => {
-    if (playerId && players[playerId]) {
-      const newX = players[playerId].x + xChange;
-      const newY = players[playerId].y + yChange;
-      if (!isSolid(newX, newY)) {
-        players[playerId].x = newX;
-        players[playerId].y = newY;
-        if (xChange === 1) {
-          players[playerId].direction = 'right';
-        } else if (xChange === -1) {
-          players[playerId].direction = 'left';
-        }
-        setDatabase(playerRef, players[playerId]);
-        attemptGrabCoin(newX, newY);
+    if (!playerId) return;
+    const player = players[playerId];
+    const newX = player.x + xChange;
+    const newY = player.y + yChange;
+    if (!isSolid(newX, newY, mapData)) {
+      player.x = newX;
+      player.y = newY;
+      if (xChange !== 0) {
+        player.direction = xChange === 1 ? 'right' : 'left';
+      } else if (yChange !== 0) {
+        player.direction = yChange === 1 ? 'down' : 'up';
       }
+      set(ref(database, `players/${playerId}`), player);
+      attemptGrabCoin(newX, newY);
     }
   };
 
   const attemptGrabCoin = (x, y) => {
     const key = getKeyString(x, y);
     if (coins[key]) {
-      setDatabase(databaseRef(database, `coins/${key}`), null);
-      updateDatabase(playerRef, {
-        coins: players[playerId].coins + 1,
+      remove(ref(database, `coins/${key}`));
+      const newCoinCount = players[playerId].coins + 1;
+      update(ref(database, `players/${playerId}`), {
+        coins: newCoinCount,
       });
+      if (newCoinCount % 5 === 0) {
+        const questionIndex = (newCoinCount / 5) - 1;
+        const questionData = questions[questionIndex % questions.length];
+        setModalContent(questionData);
+        setIsModalOpen(true);
+      }
     }
   };
 
   const placeCoin = () => {
     const { x, y } = getRandomSafeSpot();
-    const coinRef = databaseRef(database, `coins/${getKeyString(x, y)}`);
-    setDatabase(coinRef, { x, y });
+    const coinRef = ref(database, `coins/${getKeyString(x, y)}`);
+    set(coinRef, { x, y });
 
-    const coinTimeouts = [2000, 3000, 4000, 5000];
     setTimeout(() => {
       placeCoin();
-    }, randomFromArray(coinTimeouts));
+    }, randomFromArray([2000, 3000, 4000, 5000]));
   };
 
+  const setupGameListeners = (playerId, playerRef) => {
+    const allPlayersRef = ref(database, 'players');
+    const allCoinsRef = ref(database, 'coins');
+
+    onValue(allPlayersRef, (snapshot) => {
+      setPlayers(snapshot.val() || {});
+    });
+
+    onValue(allCoinsRef, (snapshot) => {
+      setCoins(snapshot.val() || {});
+    });
+
+    placeCoin();
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const playerId = user.uid;
+        setPlayerId(playerId);
+        const playerRef = ref(database, `players/${playerId}`);
+        const { x, y } = getRandomSafeSpot();
+
+        set(playerRef, {
+          id: playerId,
+          name: playerName,
+          direction: "right",
+          color: randomFromArray(playerColors),
+          x,
+          y,
+          coins: 0,
+        });
+
+        onDisconnect(playerRef).remove();
+        setupGameListeners(playerId, playerRef);
+      }
+    });
+
+    signInAnonymously(auth).catch((error) => {
+      console.error(error.code, error.message);
+    });
+  }, []);
+
+  useKeyPress({
+    'KeyW': () => handleArrowPress(0, -1),
+    'ArrowUp': () => handleArrowPress(0, -1),
+    'KeyS': () => handleArrowPress(0, 1),
+    'ArrowDown': () => handleArrowPress(0, 1),
+    'KeyA': () => handleArrowPress(-1, 0),
+    'ArrowLeft': () => handleArrowPress(-1, 0),
+    'KeyD': () => handleArrowPress(1, 0),
+    'ArrowRight': () => handleArrowPress(1, 0),
+    'KeyC': changeColor
+  });
+
   return (
-    <div>
-      <GameContainer players={players} coins={coins} />
-      <PlayerInfo
-        name={name}
-        color={color}
-        onNameChange={(newName) => {
-          setName(newName);
-          updateDatabase(playerRef, { name: newName });
-        }}
-        onColorChange={() => {
-          const mySkinIndex = playerColors.indexOf(players[playerId].color);
-          const nextColor = playerColors[mySkinIndex + 1] || playerColors[0];
-          setColor(nextColor);
-          updateDatabase(playerRef, { color: nextColor });
-        }}
+    <div className="game-wrapper">
+      <div className="game-container">
+        {Object.keys(players).map((key) => (
+          <Player key={key} player={players[key]} isCurrentPlayer={key === playerId} />
+        ))}
+        {Object.keys(coins).map((key) => (
+          <Coin key={key} coin={coins[key]} />
+        ))}
+      </div>
+      <div className="controls">
+        <div className="row">
+          <button onClick={() => handleArrowPress(0, -1)}>↑</button>
+        </div>
+        <div className="row">
+          <button onClick={() => handleArrowPress(-1, 0)}>←</button>
+          <button onClick={() => handleArrowPress(1, 0)}>→</button>
+        </div>
+        <div className="row">
+          <button onClick={() => handleArrowPress(0, 1)}>↓</button>
+        </div>
+      </div>
+      <div className="player-info">
+        <div>
+          <label htmlFor="player-name">Your Name</label>
+          <input
+            id="player-name"
+            maxLength="10"
+            type="text"
+            value={playerName}
+            onChange={handleNameChange}
+          />
+        </div>
+        <div>
+          <button id="player-color" onClick={changeColor}>
+            Change Color
+          </button>
+        </div>
+      </div>
+      <CoinModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        questionData={modalContent}
       />
     </div>
   );

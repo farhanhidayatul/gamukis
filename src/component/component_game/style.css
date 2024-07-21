@@ -1,154 +1,325 @@
-* {
-    box-sizing:border-box;
+.game-wrapper {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Use viewport height to ensure it fills the screen */
+  background: linear-gradient(
+    180deg,
+    #64beff -50%,
+    #6e96ff 69.71%,
+    #2a65ff 150%
+  );
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-wrapper .game-container {
+  position: relative;
+  width: 240px;
+  height: 208px;
+  background: url(/src/images/map.png) no-repeat no-repeat;
+  transform: scale(3);
+  image-rendering: pixelated;
+}
+
+.game-wrapper .player-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1em;
+  display: flex;
+  gap: 0.5em;
+  align-items: flex-end;
+}
+
+.game-wrapper label {
+  display: block;
+  font-weight: bold;
+}
+
+.game-wrapper input[type="text"],
+.game-wrapper button {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 18px;
+  height: 44px;
+  border-radius: 4px;
+  outline: 0;
+}
+
+.game-wrapper input[type="text"] {
+  outline: 0;
+  padding-left: 0.5em;
+  border: 3px solid #222034;
+  width: 150px;
+  text-transform: uppercase;
+}
+.game-wrapper input[type="text"]:focus {
+  border-color: #f000ff;
+}
+
+.game-wrapper button {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background: #59ff5a;
+  border: 0;
+  border-bottom: 2px solid #1e830b;
+  cursor: pointer;
+}
+.game-wrapper button:active {
+  position: relative;
+  top: 1px;
+}
+
+/* Characters */
+.game-wrapper .grid-cell {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+}
+.game-wrapper .Character {
+  transition: transform 0.4s;
+}
+.game-wrapper .Character.you {
+  z-index: 1;
+}
+.game-wrapper .Character.you .Character_you-arrow {
+  display: block;
+}
+.game-wrapper .Character_you-arrow {
+  display: none;
+  position: absolute;
+  top: -18px;
+  left: 5px;
+  width: 7px;
+  height: 5px;
+  background: url(/src/images/arrow.png) no-repeat no-repeat;
+}
+.game-wrapper .Character_sprite {
+  overflow: hidden;
+  top: -3px;
+  background: url(/src/images/characters.png);
+}
+
+.game-wrapper .Character_shadow {
+  background: url('/src/images/shadow.png') no-repeat;
+}
+
+.game-wrapper .Character_name-container {
+  position: absolute;
+  top: -12px;
+  left: -5px;
+  font-size: 5px;
+  padding: 1px 2px 1px;
+  border-radius: 3px;
+  background: #333;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.game-wrapper .Character[data-direction="right"] .Character_sprite {
+  background-position-x: 16px;
+}
+.game-wrapper .Character[data-color="red"] .Character_sprite {
+  background-position-y: -16px;
+}
+.game-wrapper .Character[data-color="orange"] .Character_sprite {
+  background-position-y: -32px;
+}
+.game-wrapper .Character[data-color="yellow"] .Character_sprite {
+  background-position-y: -48px;
+}
+.game-wrapper .Character[data-color="green"] .Character_sprite {
+  background-position-y: -64px;
+}
+.game-wrapper .Character[data-color="purple"] .Character_sprite {
+  background-position-y: -80px;
+}
+.game-wrapper .Character_shadow {
+  background: url(/src/images/shadow.png) no-repeat no-repeat;
+}
+
+.game-wrapper .Character_name-container {
+  position: absolute;
+  top: -12px;
+  left: -5px;
+  font-size: 5px;
+  padding: 1px 2px 1px;
+  border-radius: 3px;
+  background: #333;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.game-wrapper .Character_coins {
+  margin-left: 1px;
+  color: gold;
+}
+
+/* Coins */
+.game-wrapper .Coin_sprite {
+  background: url(/src/images/coin.png) no-repeat no-repeat;
+  animation: coinFloat 0.8s linear infinite alternate-reverse;
+}
+@keyframes coinFloat {
+  from {
+    transform: translateY(0);
   }
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: linear-gradient(180deg, #64BEFF -50%, #6e96ff 69.71%, #2a65ff 150%);
-    font-family: 'Source Sans Pro', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  to {
+    transform: translateY(5px);
   }
-  
-  .game-container { 
-    position: relative;
-    width: 240px;
-    height: 208px;
-    background: url(/src/images/map.png) no-repeat no-repeat;
-    transform: scale(3);
-    image-rendering: pixelated;
-  }
-  
-  .player-info {
-    position: absolute;
-    top: 0;
-    left:0;
-    padding: 1em;
-    display: flex;
-    gap: 0.5em;
-    align-items: flex-end
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  button {
-    font-family: inherit;
-    font-weight: bold;
-    font-size: 18px;
-    height: 44px;
-    border-radius: 4px;
-    outline: 0;
-  }
-  
-  input[type="text"] {
-    outline: 0;
-    padding-left: 0.5em;
-    border: 3px solid #222034;
-    width: 150px;
-    text-transform: uppercase;
-  }
-  input[type="text"]:focus {
-    border-color: #f000ff;
-  }
-  
-  button {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    background: #59ff5a;
-    border: 0;
-    border-bottom: 2px solid #1e830b;
-    cursor: pointer;
-  }
-  button:active {
-    position: relative;
-    top: 1px;
-  }
-  
-  /* Characters */
-  .grid-cell {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-  }
-  .Character {
-    transition: transform 0.4s;
-  }
-  .Character.you {
-    z-index: 1;
-  }
-  .Character.you .Character_you-arrow {
-    display: block;
-  }
-  .Character_you-arrow {
-    display: none;
-    position: absolute;
-    top:-18px;
-    left: 5px;
-    width: 7px;
-    height: 5px;
-    background: url(/src/images/arrow.png) no-repeat no-repeat;
-  }
-  .Character_sprite {
-    overflow: hidden;
-    top: -3px;
-    background: url(/src/images/characters.png);
-  }
-  .Character[data-direction="right"] .Character_sprite {
-    background-position-x: 16px;
-  }
-  .Character[data-color="red"] .Character_sprite {
-    background-position-y: -16px;
-  }
-  .Character[data-color="orange"] .Character_sprite {
-    background-position-y: -32px;
-  }
-  .Character[data-color="yellow"] .Character_sprite {
-    background-position-y: -48px;
-  }
-  .Character[data-color="green"] .Character_sprite {
-    background-position-y: -64px;
-  }
-  .Character[data-color="purple"] .Character_sprite {
-    background-position-y: -80px;
-  }
-  .Character_shadow {
-    background: url(/src/images/shadow.png) no-repeat no-repeat;
-  }
-  
-  .Character_name-container {
-    position: absolute;
-    top: -12px;
-    left: -5px;
-    font-size: 5px;
-    padding: 1px 2px 1px;
-    border-radius: 3px;
-    background: #333;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .Character_coins {
-    margin-left: 1px;
-    color: gold;
-  }
-  
-  /* Coins */
-  .Coin_sprite {
-    background: url(/src/images/coin.png) no-repeat no-repeat;
-    animation: coinFloat 0.8s linear infinite alternate-reverse;
-  }
-  @keyframes coinFloat {
-    from { transform: translateY(0) }
-    to { transform: translateY(5px) }
-  }
-  .Coin_shadow {
-    background: url(/src/images/coin-shadow.png) no-repeat no-repeat;
-  }
+}
+.game-wrapper .Coin_shadow {
+  background: url(/src/images/coin-shadow.png) no-repeat no-repeat;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls button {
+  width: 50px;
+  height: 50px;
+  background-color: #59ff5a;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222034;
+  cursor: pointer;
+  box-shadow: 0 4px #1e830b;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.controls button:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.controls .row {
+  display: flex;
+  justify-content: center;
+}
+
+.controls .row:first-child {
+  margin-bottom: -20px; /* Adjust spacing between rows */
+}
+
+.controls .row:last-child {
+  margin-top: -20px; /* Adjust spacing between rows */
+}
+
+.controls .row button:nth-child(2) {
+  margin-left: 30px; /* Adjust horizontal spacing between buttons */
+  margin-right: 30px; /* Adjust horizontal spacing between buttons */
+}
+
+@keyframes walk-down {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -20px; }
+  100% { background-position-x: -40px; }
+  100% { background-position-x: -60px; }
+}
+
+@keyframes walk-up {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -20px; }
+  100% { background-position-x: -40px; }
+  100% { background-position-x: -60px; }
+}
+
+@keyframes walk-left {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -20px; }
+  100% { background-position-x: -40px; }
+  100% { background-position-x: -60px; }
+}
+
+@keyframes walk-right {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -20px; }
+  100% { background-position-x: -40px; }
+  100% { background-position-x: -60px; }
+}
+
+.game-wrapper .Character_svg {
+  top: -20px;
+  width: 19px;  /* Adjust to frameWidth */
+  height: 36px; /* Adjust to frameHeight */
+  background: url('/src/images/char-man-1.svg') no-repeat; /* Use the correct path to your SVG */
+}
+
+/* Adjustments for SVG characters */
+.game-wrapper .Character[data-color="man"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.game-wrapper .Character[data-color="man"] .Character_name-container {
+  top: -30px; /* Adjust as needed to move the name container up */
+}
+
+.game-wrapper .Character[data-color="man"] .Character_you-arrow {
+  top: -36px; /* Adjust as needed to position the arrow correctly */
+}
+
+.game-wrapper .Character[data-color="man"] .Character_shadow {
+  bottom: -2px;
+}
+
+/* Game-specific character animation for SVG */
+.game-wrapper .Character[data-color="man"][data-direction="down"] .Character_svg {
+  background-position-x: -20px;
+  background-position-y: 0px;
+}
+
+.game-wrapper .Character[data-color="man"][data-direction="up"] .Character_svg {
+  background-position-x: -20px;
+  background-position-y: -37px;
+}
+
+.game-wrapper .Character[data-color="man"][data-direction="left"] .Character_svg {
+  background-position-x: -20px;
+  background-position-y: -72px;
+}
+
+.game-wrapper .Character[data-color="man"][data-direction="right"] .Character_svg {
+  background-position-x: -20px;
+  background-position-y: -110px;
+}
+
+.game-wrapper .Character.moving[data-color="man"][data-direction="down"] .Character_svg {
+  background-position-y: 0; /* Row 0 */
+  animation: walk-down 0.5s steps(3) infinite;
+}
+
+.game-wrapper .Character.moving[data-color="man"][data-direction="up"] .Character_svg {
+  background-position-y: -36px; /* Row 1 */
+  animation: walk-up 0.5s steps(3) infinite;
+}
+
+.game-wrapper .Character.moving[data-color="man"][data-direction="left"] .Character_svg {
+  background-position-y: -73px; /* Row 2 */
+  animation: walk-left 0.5s steps(3) infinite;
+}
+
+.game-wrapper .Character.moving[data-color="man"][data-direction="right"] .Character_svg {
+  background-position-y: -109px; /* Row 3 */
+  animation: walk-right 0.55s steps(3) infinite;
+}
+

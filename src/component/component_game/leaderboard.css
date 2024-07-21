@@ -1,0 +1,70 @@
+/* src/Leaderboard.css */
+.leaderboard {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaderboard h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .leaderboard p {
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .leaderboard ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .leaderboard li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .leaderboard li:last-child {
+    border-bottom: none;
+  }
+  
+  .rank {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .name {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .stars {
+    color: gold;
+  }
+  
+  .score {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  
+  .rank-1 .rank, .rank-1 .name, .rank-1 .stars, .rank-1 .score {
+    color: gold;
+  }
+  
+  .rank-2 .rank, .rank-2 .name, .rank-2 .stars, .rank-2 .score {
+    color: silver;
+  }
+  
+  .rank-3 .rank, .rank-3 .name, .rank-3 .stars, .rank-3 .score {
+    color: bronze;
+  }
+  
