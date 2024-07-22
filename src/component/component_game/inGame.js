@@ -7,10 +7,12 @@ import {
 } from './utils';
 import Player from './playerInfo';
 import Coin from './coin';
+import Leaderboard from './leaderboard';
 import "./style.css";
 import useKeyPress from './useKeyPress';
 import CoinModal from './modal';
 import { questions } from './questions';
+import Timer from './timer';
 
 const mapData = {
   minX: 1,
@@ -27,6 +29,7 @@ const playerColors = ["blue", "red", "orange", "yellow", "green", "purple", "man
 const InGame = () => {
   const [playerId, setPlayerId] = useState(null);
   const [players, setPlayers] = useState({});
+  const [randomPlayers, setRandomPlayers] = useState([]);
   const [coins, setCoins] = useState({});
   const [playerName, setPlayerName] = useState(createName());
   const [playerColor, setPlayerColor] = useState('');
@@ -100,12 +103,33 @@ const InGame = () => {
     }, randomFromArray([2000, 3000, 4000, 5000]));
   };
 
+  const selectRandomPlayers = (playersObj, currentPlayerId) => {
+    const playerIds = Object.keys(playersObj);
+    const randomPlayerIds = [];
+    const MAX_DISPLAY_PLAYERS = 10;
+
+    if (currentPlayerId && playerIds.includes(currentPlayerId)) {
+      randomPlayerIds.push(currentPlayerId);
+      playerIds.splice(playerIds.indexOf(currentPlayerId), 1);
+    }
+
+    while (randomPlayerIds.length < MAX_DISPLAY_PLAYERS && playerIds.length > 0) {
+      const randomIndex = Math.floor(Math.random() * playerIds.length);
+      randomPlayerIds.push(playerIds[randomIndex]);
+      playerIds.splice(randomIndex, 1);
+    }
+
+    setRandomPlayers(randomPlayerIds);
+  };
+
   const setupGameListeners = (playerId, playerRef) => {
     const allPlayersRef = ref(database, 'players');
     const allCoinsRef = ref(database, 'coins');
 
     onValue(allPlayersRef, (snapshot) => {
-      setPlayers(snapshot.val() || {});
+      const playersData = snapshot.val() || {};
+      setPlayers(playersData);
+      selectRandomPlayers(playersData, playerId);
     });
 
     onValue(allCoinsRef, (snapshot) => {
@@ -157,8 +181,9 @@ const InGame = () => {
 
   return (
     <div className="game-wrapper">
+      <Timer initialMinutes={30} initialSeconds={0} targetUrl="/result" />
       <div className="game-container">
-        {Object.keys(players).map((key) => (
+        {randomPlayers.map((key) => (
           <Player key={key} player={players[key]} isCurrentPlayer={key === playerId} />
         ))}
         {Object.keys(coins).map((key) => (
@@ -198,11 +223,27 @@ const InGame = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         questionData={modalContent}
+        onQuestionAnswered={(question, answer, correct) => {
+          const answerData = {
+            question: question,
+            answer: answer,
+            correct: correct
+          };
+          const answerRef = ref(database, `answers/${playerId}`);
+          update(answerRef, {
+            [correct ? 'correctAnswers' : 'incorrectAnswers']: answerData
+          });
+        }}
+        playerId={playerId}
       />
+      <Leaderboard />
     </div>
-  );
+  );  
 };
 
 export default InGame;
+
+
+
 
 

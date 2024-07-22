@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import './modal.css'; // Import CSS for animations and styling
+import { ref, push, database } from '../../database/firebase'; // Import database and push from firebase
 
-const CoinModal = ({ isOpen, onRequestClose, questionData }) => {
+const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, playerId }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
     // Reset state when questionData changes
     setSelectedAnswer(null);
-    setShowFeedback(false);
     setIsCorrect(false);
   }, [questionData]);
 
@@ -19,9 +18,18 @@ const CoinModal = ({ isOpen, onRequestClose, questionData }) => {
       setSelectedAnswer(answer);
       const correct = answer === questionData.correct;
       setIsCorrect(correct);
-      setShowFeedback(true);
+      onQuestionAnswered(questionData.question, answer, correct); // Pass the result to the parent
+
+      // Save the answer to the database
+      const answerData = {
+        question: questionData.question,
+        answer: answer,
+        correct: correct
+      };
+      const answerRef = ref(database, `answers/${playerId}/${correct ? 'correctAnswers' : 'incorrectAnswers'}`);
+      push(answerRef, answerData);
+
       setTimeout(() => {
-        setShowFeedback(false);
         onRequestClose();
       }, 1500);
     }
@@ -50,17 +58,18 @@ const CoinModal = ({ isOpen, onRequestClose, questionData }) => {
             </button>
           ))}
         </div>
-        {showFeedback && (
-          <div className={isCorrect ? "feedback correct" : "feedback incorrect"}>
-            {isCorrect ? "Correct!" : "Incorrect!"}
-          </div>
-        )}
       </div>
     </Modal>
   );
 };
 
 export default CoinModal;
+
+
+
+
+
+
 
 
 

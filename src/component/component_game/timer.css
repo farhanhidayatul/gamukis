@@ -1,0 +1,44 @@
+.timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: white;
+  }
+  
+  .time-block {
+    background-color: #00bcd4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+  }
+  
+  .colon {
+    background-color: #00bcd4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin: 0 5px;
+    font-weight: bold;
+  }
+  
+  .timer.almost-up .time-block {
+    background-color: #FFC107; /* Warna kuning */
+  }
+  
+  .timer.almost-up .colon {
+    background-color: #FFC107; /* Warna kuning */
+  }
+  
+  
+  
+  

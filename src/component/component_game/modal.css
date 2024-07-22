@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 500px;
-    padding: 20px;
+    padding: 40px;
     background-color: white;
     border: 2.5px solid;
     border-image: linear-gradient(to bottom, #558FFF, #A7A587, #FFBE06) 1;
@@ -49,6 +49,14 @@ h2 {
     border: #03a9f4 2px;
 }
 
+.option-button:hover {
+    color: black;
+}
+
+.option-button:disabled {
+    color: white;
+}
+
 .option-button:nth-child(1) {
     background-color: #ffc107; /* Yellow */
 }
@@ -66,11 +74,13 @@ h2 {
 }
 
 .option-button.correct {
-    background-color: #4caf50; /* Green */
+    background-color: #1AFF83;
+    border: 2px solid #ADFFC9
 }
 
 .option-button.incorrect {
-    background-color: #f44336; /* Red */
+    background-color: #B7B7B7;
+    border: 2px solid #9C9C9C;
 }
 
 .option-button.blurred {
@@ -84,25 +94,4 @@ h2 {
     font-weight: bold;
     transition: opacity 0.5s ease-in-out;
 }
-
-
-
-.correct {
-    background-color: green;
-    color: white;
-  }
-  
-  .incorrect {
-    background-color: red;
-    color: white;
-  }
-  
-  
-  .feedback.correct {
-    color: green;
-  }
-  
-  .feedback.incorrect {
-    color: red;
-  }
   
