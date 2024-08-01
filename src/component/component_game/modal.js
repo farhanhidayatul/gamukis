@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import './modal.css'; // Import CSS for animations and styling
-import { ref, push, database } from '../../database/firebase'; // Import database and push from firebase
+import './modal.css';
+import { ref, push, database } from '../../database/firebase';
 
 const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, playerId }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -64,6 +64,8 @@ const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, p
 };
 
 export default CoinModal;
+
+
 
 
 

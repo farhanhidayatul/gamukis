@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  auth, database, ref, set, onValue, onDisconnect, remove, update, signInAnonymously, onAuthStateChanged
+  auth, database, ref, set, onValue, onDisconnect, remove, update, signInAnonymously, onAuthStateChanged, push
 } from '../../database/firebase';
 import {
   randomFromArray, getKeyString, createName, isSolid, getRandomSafeSpot
@@ -39,6 +39,8 @@ const InGame = () => {
     options: [],
     correct: ""
   });
+
+  const POINT_THRESHOLD = 5; // Change this to the required number of points to show next question
 
   const handleNameChange = (event) => {
     const newName = event.target.value || createName();
@@ -84,11 +86,8 @@ const InGame = () => {
       update(ref(database, `players/${playerId}`), {
         coins: newCoinCount,
       });
-      if (newCoinCount % 5 === 0) {
-        const questionIndex = (newCoinCount / 5) - 1;
-        const questionData = questions[questionIndex % questions.length];
-        setModalContent(questionData);
-        setIsModalOpen(true);
+      if (newCoinCount % POINT_THRESHOLD === 0) {
+        checkLastQuestionTime(playerId);
       }
     }
   };
@@ -101,6 +100,35 @@ const InGame = () => {
     setTimeout(() => {
       placeCoin();
     }, randomFromArray([2000, 3000, 4000, 5000]));
+  };
+
+  const checkLastQuestionTime = (playerId) => {
+    const playerRef = ref(database, `players/${playerId}`);
+    onValue(playerRef, (snapshot) => {
+      const playerData = snapshot.val();
+      const now = Date.now();
+      if (!playerData.lastQuestionTime || now - playerData.lastQuestionTime >= POINT_THRESHOLD * 1000) {
+        fetchNextUnansweredQuestion(playerId);
+      }
+    });
+  };
+
+  const fetchNextUnansweredQuestion = (playerId) => {
+    const answersRef = ref(database, `answers/${playerId}`);
+    onValue(answersRef, (snapshot) => {
+      const answeredQuestions = new Set();
+      snapshot.forEach(childSnapshot => {
+        const childData = childSnapshot.val();
+        answeredQuestions.add(childData.question);
+      });
+      const nextQuestion = questions.find(q => !answeredQuestions.has(q.question));
+      if (nextQuestion) {
+        setModalContent(nextQuestion);
+        setIsModalOpen(true);
+      } else {
+        console.log("All questions have been answered.");
+      }
+    });
   };
 
   const selectRandomPlayers = (playersObj, currentPlayerId) => {
@@ -155,6 +183,7 @@ const InGame = () => {
           x,
           y,
           coins: 0,
+          lastQuestionTime: 0, // Initialize lastQuestionTime
         });
 
         onDisconnect(playerRef).remove();
@@ -181,7 +210,7 @@ const InGame = () => {
 
   return (
     <div className="game-wrapper">
-      <Timer initialMinutes={30} initialSeconds={0} targetUrl="/result" />
+      <Timer initialMinutes={5} initialSeconds={0} targetUrl="/result" />
       <div className="game-container">
         {randomPlayers.map((key) => (
           <Player key={key} player={players[key]} isCurrentPlayer={key === playerId} />
@@ -230,8 +259,11 @@ const InGame = () => {
             correct: correct
           };
           const answerRef = ref(database, `answers/${playerId}`);
-          update(answerRef, {
-            [correct ? 'correctAnswers' : 'incorrectAnswers']: answerData
+          push(answerRef, answerData);
+
+          // Update the last question time and points in the player's data
+          update(ref(database, `players/${playerId}`), {
+            lastQuestionTime: Date.now(),
           });
         }}
         playerId={playerId}
@@ -242,6 +274,7 @@ const InGame = () => {
 };
 
 export default InGame;
+
 
 
 

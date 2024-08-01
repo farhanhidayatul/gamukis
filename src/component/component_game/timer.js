@@ -10,24 +10,27 @@ const Timer = ({ initialMinutes = 0, initialSeconds = 0, targetUrl }) => {
   useEffect(() => {
     let totalInitialSeconds = initialMinutes * 60 + initialSeconds;
     let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else if (minutes > 0) {
-        setMinutes(minutes - 1);
-        setSeconds(59);
-      } else {
-        clearInterval(myInterval);
-        window.location.href = targetUrl; // Redirect to the target URL
-      }
+      setSeconds(prevSeconds => {
+        if (prevSeconds > 0) {
+          return prevSeconds - 1;
+        } else if (minutes > 0) {
+          setMinutes(prevMinutes => prevMinutes - 1);
+          return 59;
+        } else {
+          clearInterval(myInterval);
+          window.location.href = targetUrl; // Redirect to the target URL
+          return 0;
+        }
+      });
 
-      let totalRemainingSeconds = minutes * 60 + seconds;
-      if (totalRemainingSeconds <= totalInitialSeconds / 2) {
+      let totalRemainingSeconds = (minutes * 60) + seconds - 1;
+      if (totalRemainingSeconds <= totalInitialSeconds / 2 && totalRemainingSeconds >= 0) {
         setIsTimeAlmostUp(true);
       }
     }, 1000);
 
     return () => clearInterval(myInterval);
-  }, [minutes, seconds, initialMinutes, initialSeconds, targetUrl]);
+  }, [initialMinutes, initialSeconds, minutes, seconds, targetUrl]);
 
   return (
     <div className={`timer ${isTimeAlmostUp ? 'almost-up' : ''}`}>
