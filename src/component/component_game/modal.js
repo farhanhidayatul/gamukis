@@ -2,23 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import './modal.css';
 import { ref, push, database } from '../../database/firebase';
+import { questions } from './questions'; // Import questions here
 
-const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, playerId }) => {
+const CoinModal = ({ isOpen, onRequestClose, onQuestionAnswered, playerId }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [questionData, setQuestionData] = useState({}); // State for the current question
 
   useEffect(() => {
-    // Reset state when questionData changes
+    // Randomly select a question when the modal opens
+    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+    setQuestionData(randomQuestion);
+    // Reset state
     setSelectedAnswer(null);
     setIsCorrect(false);
-  }, [questionData]);
+  }, [isOpen]); // Trigger when modal opens
 
   const handleAnswerClick = (answer) => {
-    if (selectedAnswer === null) { // Prevent clicking again after an answer is selected
+    if (selectedAnswer === null) {
       setSelectedAnswer(answer);
       const correct = answer === questionData.correct;
       setIsCorrect(correct);
-      onQuestionAnswered(questionData.question, answer, correct); // Pass the result to the parent
+      onQuestionAnswered(questionData.question, answer, correct);
 
       // Save the answer to the database
       const answerData = {
@@ -47,7 +52,7 @@ const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, p
       <div className="modal-content">
         <h2>{questionData.question}</h2>
         <div className="options">
-          {questionData.options.map((option, index) => (
+          {questionData.options && questionData.options.map((option, index) => (
             <button 
               key={index} 
               onClick={() => handleAnswerClick(option)}
@@ -64,6 +69,7 @@ const CoinModal = ({ isOpen, onRequestClose, questionData, onQuestionAnswered, p
 };
 
 export default CoinModal;
+
 
 
 
