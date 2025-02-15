@@ -1,0 +1,104 @@
+.register-container {
+    height: 100vh;
+    background-color: #FFBE06;
+    transform-origin: center;
+    overflow: hidden;
+    position: relative;
+  }
+.register-bg-assesoris {
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image:url(../images/bg_quiz_1.png);
+    height: 100vh;
+    width: 100%;
+}
+  
+  .register-left {
+    flex: 1;
+    padding: 2rem;
+    color: white;
+  }
+
+  .logo-regist {
+    position: relative;
+    z-index: 2;
+    top: 50px;
+  }
+
+  .circle-1, .circle-2 {
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .circle-1 {
+    width: 968px;
+    height: 968px;
+    background-color: #4E8AFF;
+    border-radius: 50%; /* Membuatnya menjadi lingkaran */
+    display: flex;
+    position: absolute;
+    top: 425px ;
+    left: -250px;
+  }
+  
+  .circle-2 {
+    width: 745px;
+    height: 745px;
+    background-color: #FFFDF5; /* Warna kuning */
+    border-radius: 50%; /* Membuatnya menjadi lingkaran */
+    display: flex;
+    position: absolute;
+    top: 550px ;
+    left: -150px;
+  }
+
+  .register-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 50px 50px 50px 50px;
+  }
+  
+  .welcome-text {
+    text-align: left;
+  }
+  
+  .welcome-text h2 {
+    font-size: 24px;
+  }
+  
+  .highlight {
+    color: #0056b3;
+  }
+  
+  .next-button {
+    background: #FFA000;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .google-button {
+    background: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .otp-box {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .otp-input {
+    width: 40px;
+    text-align: center;
+  }
+  
+  

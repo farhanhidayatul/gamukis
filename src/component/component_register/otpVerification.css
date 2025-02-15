@@ -1,0 +1,80 @@
+.otpVerification-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 80px 80px 160px 80px;
+    max-width: 550px;
+    width: 100%;
+    margin: 0 120px 0 0;
+}
+
+.text-desc {
+    text-align: center;
+    justify-content: center;
+    width: 460px;
+    margin:80px 0 0 40px;
+    color: #5A5A5A;
+}
+
+.otp-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.otp-input {
+    width: 50px;
+    margin: 40px 5px 40px 5px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid gray;
+    border-radius: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.otp-input:focus {
+    border-color: #4E8AFF;
+    outline: none;
+}
+
+/* Timer hitung mundur */
+.countdown-text {
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    padding: 10px;
+    margin: 20px 0 40px 0;
+}
+
+/* Bagian angka akan berwarna kuning */
+.countdown-text .countdown-highlight {
+    color: #FFBE06;
+    font-weight: bold;
+}
+
+/* Tombol Kirim Ulang */
+.resend-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0 40px 0;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    color: grey;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resend-button:hover {
+    color: #E6A500;
+}
+
+.resend-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

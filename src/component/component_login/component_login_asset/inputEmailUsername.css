@@ -1,0 +1,27 @@
+.input-field-emailorusername {
+    display: block;
+    width: 505px;
+    height: 30px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 15px;
+    font-size: 16px;
+    border: 2px solid gray; /* Default gray */
+  }
+  .label-emailorusername {
+    color: grey;
+  }
+  
+  
+  .input-empty {
+    border-color: gray;
+  }
+  
+  .input-valid {
+    border-color: #FFBE06;
+  }
+  
+  .input-invalid {
+    border-color: #F36060;
+  }
+  

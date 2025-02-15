@@ -1,0 +1,27 @@
+.google-register-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #1268C6; /* Warna biru khas Google */
+    color: white; /* Warna teks putih */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    margin: 20px 0 0 0;
+    padding: 15px 154px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.google-login-button:hover {
+    background-color: #357ae8; /* Warna biru lebih gelap saat hover */
+}
+
+/* Ikon Google */
+.google-login-button img {
+    width: 20px; /* Ukuran ikon */
+    height: 20px;
+}

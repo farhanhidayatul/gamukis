@@ -1,0 +1,75 @@
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 60px 0;
+    position: relative;
+}
+
+.progress-line {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    width: 88%;
+    height: 1px;
+    background-color: #d5d5d5;
+    z-index: 1;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #FF8C00; /* Warna orange */
+    transition: width 0.3s ease-in-out;
+}
+
+/* Jika step >= 2, isi setengah */
+.progress-fill.half {
+    width: 50%;
+}
+
+/* Jika step >= 3, isi penuh */
+.progress-fill.full {
+    width: 100%;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 15px;
+}
+
+.circle {
+    width: 25px; 
+    height: 25px; 
+    border-radius: 50%;
+    border: 2px solid #FFC505;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    z-index: 2;
+    box-sizing: border-box;
+    padding: 0%;
+}
+
+/* Pastikan lingkaran tetap bulat saat aktif */
+.circle.active {
+    background-color: #FFC505;
+    border: 5px solid #FFEC44;
+    border-radius: 50% !important;
+    transform: none !important; /* Hapus transformasi yang mengubah bentuk */
+}
+
+
+.active-label {
+    font-weight: bold;
+    color: #000;
+}
+

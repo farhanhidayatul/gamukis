@@ -1,0 +1,26 @@
+.login-button {
+    padding: 15px 245px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: transparent;
+    transition: 0.3s;
+    background-color: white;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .button-empty {
+    background-color: #D1D1D1;
+    color: white;
+    font-weight: bold;
+    cursor: not-allowed;
+  }
+  
+  .button-filled {
+    border-color: #FCD03E;
+    background-color: #FCD03E;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }

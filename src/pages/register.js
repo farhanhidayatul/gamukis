@@ -1,59 +1,38 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import "./register.css";
+import IntroductionRegistration from "../component/component_register/introductionRegistration";
+import RegistrationAccount from "../component/component_register/registrationAccount";
+import PersonalInfo from "../component/component_register/personalInfo";
+import OTPVerification from "../component/component_register/otpVerification";
+import GamukisLogo from "../images/gamukis_vector.png"
+import AssetGamukis from "../images/gamukis-regist-1.png"
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffcc00;
-`;
+const RegisterPage = () => {
+  const [step, setStep] = useState(1);
 
-const Card = styled.div`
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 400px;
-  width: 100%;
-`;
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => prev - 1);
 
-const Title = styled.h1`
-  font-size: 24px;
-  color: #333;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: none;
-  background-color: #28a745;
-  color: white;
-  font-size: 16px;
-`;
-
-const RegistrationPage = () => {
   return (
-    <Container>
-      <Card>
-        <Title>Register</Title>
-        <Input type="text" placeholder="Username" />
-        <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-        <Button>Register</Button>
-      </Card>
-    </Container>
+    <div className="register-container">
+      <div className="register-bg-assesoris">
+        <div className="register-left">
+          <img src={GamukisLogo} alt="GAMUKIS Logo" className="logo" />
+          <img src={AssetGamukis} alt="AssetRegist" className="logo-regist" />
+          <div className="circle-1"></div>
+          <div className="circle-2"></div>
+        </div>
+
+        <div className="register-right">
+          {step === 1 && <IntroductionRegistration nextStep={nextStep} />}
+          {step === 2 && <RegistrationAccount nextStep={nextStep} />}
+          {step === 3 && <PersonalInfo nextStep={nextStep} />}
+          {step === 4 && <OTPVerification />}
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default RegistrationPage;
+export default RegisterPage;
+

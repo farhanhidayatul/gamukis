@@ -1,0 +1,38 @@
+.checkbox-gender {
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.gender-container {
+    display: flex;
+    gap: 80px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .gender-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0 0 0;
+    margin: 5px 0 20px 0;
+  }
+  
+  .circle-gender {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 2px solid #ccc;
+    margin-right: 8px;
+    display: inline-block;
+  }
+  
+  .selected .circle-gender {
+    background-color: #ffbb33;
+    border-color: #FFF9EF;
+    border: 4px solid #FFF9EF;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  

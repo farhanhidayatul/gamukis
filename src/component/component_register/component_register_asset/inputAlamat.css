@@ -1,0 +1,22 @@
+.address-container {
+    display: relative;
+    align-items: center;
+    gap: 5px;
+    padding: 20px 0;
+}
+
+.input-alamat {
+    width: 100%;
+    max-width: 525px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .label-address {
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+}

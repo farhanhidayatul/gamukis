@@ -1,0 +1,77 @@
+/* General Layout */
+.login-left {
+
+    flex: 1;
+    flex-direction: row;
+    background: #FCD24A; /* Warna sesuai dengan gambar */
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-gamukis {
+    background-image:url(/src/images/gamukis_vector.png);
+    width:300px;
+    height:85px;
+    background-size: contain;
+    align-items: center;
+    justify-content: center;
+    left: 250px;
+    top: 25px;
+    position: relative;
+}
+
+
+.background-anime {
+    background-image: url(/src/images/asset_background_anime.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* Menyesuaikan ukuran tanpa merusak rasio aspek */
+    background-position: center; /* Memastikan gambar tetap di tengah */
+    width: 736px;
+    height: 720px;
+    position: absolute;
+    transform: scale(1.21);
+    transform-origin: center;
+    top: 170px;
+    left: 72px;
+}
+
+/* Media Queries for responsiveness */
+
+/* For screens wider than 1024px (Desktop and large laptops) */
+@media (min-width: 1024px) {
+    .login-left {
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .background-anime {
+        width: 736px;
+        height: 720px;
+    }
+  }
+
+/* For screens between 768px and 1023px (Tablets and smaller laptops) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .login-left {
+        flex-direction: column; /* Stack elements vertically on tablet */
+        padding: 20px; /* Some padding for smaller screens */
+    }
+
+    .background-anime {
+        max-height: 500px; /* Maintain appropriate height on medium screens */
+    }
+}
+
+/* For screens smaller than 768px (Mobile devices) */
+@media (max-width: 767px) {
+    .login-left {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 15px; /* Add some space around */
+        justify-content: flex-start; /* Align at the top for smaller screens */
+    }
+
+    .background-anime {
+        max-height: 300px; /* Reduce image height for mobile screens */
+        top: 20px; /* Adjust top position */
+    }
+}

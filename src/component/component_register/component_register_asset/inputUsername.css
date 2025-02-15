@@ -1,0 +1,34 @@
+.input-field-username {
+    display: block;
+    width: 95%; /* Agar responsif */
+    height: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    border: 2px solid gray; /* Default border color */
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+/* Warna label */
+.label-username {
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Jika input kosong */
+.input-empty {
+    border-color: gray;
+}
+
+/* Jika username valid (4 karakter atau lebih) */
+.input-valid {
+    border-color: #FFBE06; /* Warna kuning */
+}
+
+/* Jika username tidak valid (kurang dari 4 karakter) */
+.input-invalid {
+    border-color: #F36060; /* Warna merah */
+}
