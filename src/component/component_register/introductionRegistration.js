@@ -4,7 +4,7 @@ import "./introductionRegistration.css"
 const IntroductionRegistration = ({ nextStep }) => {
   return (
     <div>
-        <h2>Selamat datang Students, di <span className="highlight">GAMUKIS!!</span></h2>
+        <h2 className="welcome-text-students">Selamat datang Students, di <span className="highlight">GAMUKIS!!</span></h2>
         <div className="welcome-text">
             <p>Gamukis adalah platform game edukasi yang menguji pengetahuan saintek, soshum, dan teknologi secara interaktif.</p>
             <hr class="custom-line"></hr>

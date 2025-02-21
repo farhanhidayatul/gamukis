@@ -268,7 +268,7 @@ const InGame = () => {
         }}
         playerId={playerId}
       />
-      <Leaderboard />
+      <Leaderboard page="inGame"/>
     </div>
   );  
 };

@@ -59,9 +59,9 @@ const GamePage = () => {
   return (
     <div className="game-page">
       <button className="back-button" onClick={handleBack}>
-      <img className="icon-back" src={require("../images/back-icon.svg").default} alt="Biologi icon" draggable="false" />
+        <img className="icon-back" src={require("../images/back-icon.svg").default} alt="Biologi icon" draggable="false" />
         <p>Back</p>
-    </button>
+      </button>
       <div className="game-page-content">
         <div className="sidebar">
           <CardMapel 
@@ -71,7 +71,7 @@ const GamePage = () => {
             description={cardData.description}
             features={cardData.features}
           />
-          <Leaderboard />
+          <Leaderboard page="gamePage"/>
         </div>
         <div className="main-content">
           <div className="actions">

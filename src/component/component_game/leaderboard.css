@@ -1,18 +1,237 @@
-/* src/components/Leaderboard.css */
+/* ================================ */
+/* 🎯 LEADERBOARD DEFAULT STYLES */
+/* ================================ */
 .leaderboard {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  width: 200px;
-  margin: 10px;
-  position: absolute;
-  top: 60px; /* Adjust based on the height of the timer */
-  right: 10px; /* Adjust as needed for desired spacing from the right edge */
+  background: rgba(255, 255, 255, 0.6); /* Lebih transparan agar lebih modern */
+  border-radius: 40px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.leaderboard h2 {
+.leaderboard-container-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 10px;
+  margin: 0 0 20px 0;
+}
+
+.leaderboard-decs-text-1 {
+  width: 180px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.rank-leaderboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;  /* Ukuran tetap agar medal & nomor sejajar */
+  min-width: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #6C6C6C;
+}
+
+.medal {
+  width: 30px;  /* Ukuran medal tetap */
+  height: 30px;
+  object-fit: contain;
+}
+
+.player-name {
+  display: flex;
+  font-size: 12px;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-name .player-name-text{
+  margin-left: 20px;
+}
+
+.player-name .player-coins-text, .player-self .player-name .player-coins-text {
+  margin-right: 20px;
+}
+
+
+.player-coins-text{
+  font-weight: bold;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+}
+.profile-out-color {
+  display: flex;
+  justify-content: center; /* Tengah secara horizontal */
+  align-items: center; /* Tengah secara vertikal */
+  width: 100%; /* Pastikan elemen mengisi ruang */
+  height: 100%; /* Sesuaikan tinggi */
+}
+
+.profile-out-color .profile-pic {
+  display: block;
+  max-width: 100%; /* Pastikan tidak melebihi container */
+  max-height: 100%;
+}
+
+.profile-pic{
+  width: 22px;
+  height: 28px;
+  border-radius: 25%;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Warna untuk posisi 1-3 */
+.top-three .player-name, .top-three .player-self .player-name {
+  background-color: #FFC624;
+  color: #584A00;
+  font-weight: bold;
+  width: 225px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+/* Warna untuk posisi 4-9 */
+.top-ten .player-name, .top-ten .player-self .player-name {
+  background-color: #5DA8FF;
+  color: #ffffff;
+  font-weight: bold;
+  width: 225px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+/* Warna default untuk posisi di luar top 10 */
+.regular .player-name, .regular .player-self .player-name {
+  background-color: white;
+  color: #584A00;
+  width: 225px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.top-three .profile-out-color, .player-self .top-three .profile-out-color{
+  background-color: #FFC624;
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+}
+
+/* Warna untuk posisi 4-9 */
+.top-ten .profile-out-color, .player-self .top-ten .profile-out-color{
+  background-color: #5DA8FF;
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+}
+
+/* Warna default untuk posisi di luar top 10 */
+.regular .profile-out-color, .player-self .regular .profile-out-color {
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+}
+
+
+
+/* ✅ Leaderboard di gamePage (Desktop) */
+.leaderboard-gamePage {
+  position: fixed;
+  right: 1180px;
+  width: 300px;
+}
+
+/* ✅ Leaderboard di dalam game */
+.leaderboard-inGame {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.4); /* Lebih gelap agar lebih kontras */
+  color: black;
+  padding: 30px;
+  width: 300px;
+  border-radius: 40px;
+}
+
+.leaderboard-inGame .leaderboard-decs-text-1 {
+  width: 250px;
+}
+
+.leaderboard-inGame .leaderboard-decs-text-2 {
+  color: transparent;
+  cursor: not-allowed;
+}
+
+/* Garis pemisah antara top 10 dan pemain sendiri */
+.divider {
+  margin: 10px 0;
+  border: none;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Tampilan pemain sendiri jika di luar top 10 */
+.player-self {
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  background-clip: padding-box;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 5px solid #FCD03E;
   text-align: center;
+  font-weight: bold;
+  width: auto; /* Sesuaikan lebar dengan isi */
+  max-width: 100%; /* Batasi agar tidak terlalu besar */
+}
+
+/* 🔹 Menyesuaikan ukuran teks dalam .player-self */
+.player-self .player-name {
+  display: flex;
+  flex-wrap: wrap; /* Biarkan teks turun jika panjang */
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  width: fit-content; /* Ukuran menyesuaikan isi */
+  min-width: 180px; /* Beri batas minimum */
+  max-width: 100%;
+  height: auto; /* Biarkan tinggi menyesuaikan */
+}
+
+/* 🔹 Variasi ukuran untuk ranking pemain di .player-self */
+.player-self.top-three .player-name {
+  background-color: #FFC624;
+  color: #584A00;
+}
+
+.player-self.top-ten .player-name {
+  background-color: #5DA8FF;
+  color: #ffffff;
+}
+
+.player-self.regular .player-name {
+  background-color: white;
+  color: #584A00;
 }
 
 .leaderboard ul {
@@ -29,3 +248,39 @@
   border-bottom: none;
 }
 
+/* ================================ */
+/* 📌 RESPONSIVE DESIGN */
+/* ================================ */
+
+/* ✅ Tablet (Lebar max 1024px) */
+@media (max-width: 1024px) {
+  .leaderboard-gamePage {
+    right: 20px; 
+    top: 40px;
+    width: 280px;
+  }
+}
+
+/* ✅ Mobile (Lebar max 768px) */
+@media (max-width: 768px) {
+  .leaderboard-gamePage {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    width: 250px;
+    padding: 15px;
+  }
+}
+
+/* ✅ Mobile Kecil (max 480px) */
+@media (max-width: 480px) {
+  .leaderboard-gamePage {
+    width: 90%;
+    max-width: 250px;
+    right: 5%;
+    left: 5%;
+    top: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./descMateri.css";
+import "./learderboard.css";
 
 const LeaderBoard = () => {
     return (
